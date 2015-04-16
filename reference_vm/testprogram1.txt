@@ -1,0 +1,57 @@
+int [] get_lower = function(int num, int boundary) {
+    return (num < boundary) ? [num] : [];
+}
+int [] get_upper = function(int num, int boundary) {
+    return (num >= boundary) ? [num] : [];
+}
+int [] subarr = function(int [] arr, int offset) {
+    return (offset < ALEN(arr)) ? [arr[offset]] + subarr(arr, offset + 1) : [];
+}
+int [] get_all_lower = function(int [] arr, int boundary) {
+    return (ALEN(arr) > 0) ?
+        get_lower(arr[0], boundary) + get_all_lower(subarr(arr, 1), boundary) : [];
+}
+int [] get_all_upper = function(int [] arr, int boundary) {
+    return (ALEN(arr) > 0) ?
+        get_upper(arr[0], boundary) + get_all_upper(subarr(arr, 1), boundary) : [];
+}
+
+int [] quick_sort = function(int [] input) {
+    int len = ALEN(input);
+
+    int [] sort = function(int [] input) {
+        int boundary = input[0];
+        boundary;
+        int [] arr = subarr(input, 1);
+        int [] left = get_all_lower(arr, boundary);
+        int [] right = get_all_upper(arr, boundary);
+        return ((ALEN(left) > 1) ? quick_sort(left) : left) +
+               [boundary] +
+               ((ALEN(right) > 1) ? quick_sort(right) : right);
+    }
+
+    return (len == 1) ? input : sort(input);
+}
+
+string printiarray = function(string prefix, int [] iarray, int i) {
+    return (i > -1 && i < ALEN(iarray))
+        ? printiarray((prefix + ' ' + string(iarray[i])), iarray, i + 1)
+        : prefix ;
+}
+
+printiarray('a', get_lower(3, 4), 0);
+printiarray('b', get_lower(4, 3), 0);
+printiarray('c', get_upper(3, 4), 0);
+printiarray('d', get_upper(4, 3), 0);
+printiarray('e', subarr([1, 2, 3, 4], 0), 0);
+printiarray('e2', subarr([1, 2, 3, 4, 5, 6], 1), 0);
+printiarray('e3', subarr([1, 2, 3, 4, 5, 6], 3), 0);
+printiarray('f', subarr([1, 2, 3, 4], 1), 0);
+printiarray('g', get_all_lower([1, 2, 3, 4, 5], 3), 0);
+printiarray('g2', get_all_upper([1, 2, 3, 4, 5], 3), 0);
+
+int [] iarr = [5, 4, 9, 8, 3, 1, 2, 7, 6, 0];
+printiarray('pre-qs:', iarr, 0);
+printiarray('qs:', quick_sort(iarr), 0);
+
+

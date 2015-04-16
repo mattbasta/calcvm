@@ -1,0 +1,32 @@
+# program10.txt -- first shot at a long run time to try to optimize
+
+string printiarray = function(string prefix, int [] iarray, int i) {
+    return (i > -1 && i < ALEN(iarray))
+        ? printiarray((prefix + ' ' + string(iarray[i])), iarray, i + 1)
+        : prefix ;
+}
+
+# factor1 prints the factors as it finds them.
+int [] factor1 = function(int valueToFactor) {
+    int [] helpFactor = function(int value, int tryfactor, int [] factors) {
+        return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (helpFactor(value / tryfactor, 2, factors + [tryfactor]))
+                    : helpFactor(value,(tryfactor == 2 ? 3 : tryfactor + 2),
+                            factors))
+                : factors + [value]);
+    }
+    return valueToFactor > 1
+        ? ('Good parameter to factor1:' ~ valueToFactor
+            ~ helpFactor(valueToFactor, 2, []))
+        : ('Bad parameter to factor1: ' ~ valueToFactor ~ []) ;
+}
+
+int [] foo1123456789 = factor1(123456789);
+printiarray('F123456789: ', foo1123456789, 0);
+int [] twoTo30 = factor1(1073741824);
+printiarray('twoTo30: ', twoTo30, 0);
+int [] twoTo30Plus51 = factor1(1073741875);
+printiarray('twoTo30Plus51: ', twoTo30Plus51, 0);
+int [] twoTo30PlusFiftyOne = factor1(1073741875);
+printiarray('twoTo30PlusFiftyOne: ', twoTo30PlusFiftyOne, 0);

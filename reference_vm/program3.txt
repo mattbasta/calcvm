@@ -1,0 +1,120 @@
+# program3.txt holds two variations of a working factoring program.
+
+# factor1 prints the factors as it finds them.
+string factor1 = function(int valueToFactor) {
+    string helpFactor = function(int value, int tryfactor) {
+        return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (tryfactor ~ helpFactor(value / tryfactor, 2))
+                    : helpFactor(value, tryfactor + 1))
+                : (value ~ 'good'));
+    }
+    return valueToFactor > 1
+        ? ('Good parameter to factor1:' ~ valueToFactor
+            ~ helpFactor(valueToFactor, 2))
+        : ('Bad parameter to factor1: ' ~ valueToFactor ~ 'bad') ;
+}
+factor1(27);
+factor1(16);
+factor1(-1);
+factor1(0);
+factor1(1);
+factor1(12);
+
+# factor2 prints the factors as it finds them.
+string factor2 = function(int valueToFactor) {
+    int value2factor = 0 + valueToFactor * 1 / 1 ;
+    string helpFactor = function(int value, int tryfactor) {
+        return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (tryfactor ~ factor2(value / tryfactor))
+                    : helpFactor(value, tryfactor + 1))
+                : (value ~ 'good'));
+    }
+    return value2factor > 1
+        ? ('Good parameter to factor2:' ~ value2factor
+            ~ helpFactor(value2factor, 2))
+        : ('Bad parameter to factor2: ' ~ value2factor ~ 'bad') ;
+}
+factor2(27);
+factor2(16);
+factor2(-1);
+factor2(0);
+factor2(1);
+factor2(12);
+
+# factor3 prints the factors as it finds them.
+string factor3 = function(int valueToFactor) {
+    int value2factor = 0 + valueToFactor * 1 / 1 ;
+    string helpFactor = function(int value, int tryfactor) {
+        string helpDeep = function() {
+            return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (tryfactor ~ factor3(value / tryfactor))
+                    : helpFactor(value, tryfactor + 1))
+                : (value ~ 'good'));
+        }
+        return helpDeep();
+    }
+    return value2factor > 1
+        ? ('Good parameter to factor3:' ~ value2factor
+            ~ helpFactor(value2factor, 2))
+        : ('Bad parameter to factor3: ' ~ value2factor ~ 'bad') ;
+}
+factor3(27);
+factor3(16);
+factor3(-1);
+factor3(0);
+factor3(1);
+factor3(12);
+
+# factor4 prints the factors as it finds them.
+string factor4 = function(int valueToFactor) {
+    string helpFactor = function(int value, int tryfactor) {
+        string deep4 = function(int value) {
+            return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (tryfactor ~ helpFactor(value / tryfactor, 2))
+                    : helpFactor(value, tryfactor + 1))
+                : (value ~ 'good'));
+        }
+        return deep4(value);
+    }
+    return valueToFactor > 1
+        ? ('Good parameter to factor4:' ~ valueToFactor
+            ~ helpFactor(valueToFactor, 2))
+        : ('Bad parameter to factor4: ' ~ valueToFactor ~ 'bad') ;
+}
+factor4(27);
+factor4(16);
+factor4(-1);
+factor4(0);
+factor4(1);
+factor4(12);
+
+# factor5 prints the factors as it finds them.
+string factor5 = function(int valueToFactor) {
+    string helpFactor = function(int value, int tryfactor) {
+        string deep4 = function(int value) {
+            string deepest = function(int unused) {
+                return ((tryfactor < value) ?
+                    ((value % tryfactor == 0) ?
+                        (tryfactor ~ helpFactor(value / tryfactor, 2))
+                        : helpFactor(value, tryfactor + 1))
+                    : (value ~ 'good'));
+            }
+            return deepest(valueToFactor);
+        }
+        return deep4(value);
+    }
+    return valueToFactor > 1
+        ? ('Good parameter to factor5:' ~ valueToFactor
+            ~ helpFactor(valueToFactor, 2))
+        : ('Bad parameter to factor5: ' ~ valueToFactor ~ 'bad') ;
+}
+factor5(27);
+factor5(16);
+factor5(-1);
+factor5(0);
+factor5(1);
+factor5(12);

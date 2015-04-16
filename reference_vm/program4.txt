@@ -1,0 +1,55 @@
+'test1' ;
+5 + 4 == 0 * 1 + 17 - 8 ;
+'test2' ;
+5.0 * 4 ;
+'test3' ;
+4 / 5.3 ;
+'test4' ;
+- 2 ;
+'test5' ;
+! 0 ;
+'test' + '6' ;
+1 < 2 && 3 < 4 && 5 < 6 ;
+'test7' ;
+1 > 2 && 3 == 4 && 5 > 6 ;
+'test8' ;
+1 > 2 || 3 > 4 || 5 > 6 ;
+'test9' ;
+1 > 2 || 3 > 4 || 5 > 6 || 'dog' == 'dog' ;
+'test10' ;
+1 < 2 || 3 < 4 || 5 < 6 ;
+'test11' ;
+7 % 3 ;
+
+'test12' ;
+((5 + 2 * 3) > 7.0) ? 'dog' : 'cat' ;
+'test13';
+((5 + 2 * 3) <= 7.0) ? 'bird' : 'triceratops' ;
+
+int a = 3 ;
+int b = 2 ;
+'test14' ;
+a + 4 ;
+'test15' ;
+5.0 * b ;
+'test16' ;
+(4 % b) / 5  ;
+float fff = 1 / 2.0 ;
+'test17' ;
+- fff + 3 ;
+'test18' ;
+! b ;
+string c = 'rabbit' ;
+string d = 'squirrel' ;
+'test19';
+(5 + a * b > 7.0) ? c : 'cat' ;
+int f = function(int x, float y, string z) {
+    int a = x ;
+    return a * y ;
+}
+float fval = -2.9 ;
+'test20';
+f(1.0, 2, c);
+float fret = f(a, fval, 'meow');
+'test21' ;
+fret * 1 + 0 ;

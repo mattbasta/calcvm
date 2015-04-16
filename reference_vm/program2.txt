@@ -1,0 +1,71 @@
+# program2.txt should contain types mistamcthes and undefined and
+# redefined symbols for assignment 4.
+int a = 2 ;
+int b = 3 + a ;
+int f = function(int b, int c) {
+    int x = 5 * b ;
+    string innerf = function(int count, string text) {
+        int x = a % 2;
+        return a ;
+    }
+    return x > 7 ? x + 3 : innerf(3) ;
+}
+f(a, b);
+3 ;
+float f1 = 3 ;
+f1 ;
+float f1 = f(f5, 3.7);
+string f3 = f('fred', 3.7);
+string s = 'my string' ;
+s ;
+# These tests added 11/11/11 in an attempt to trigger every possible kinds of
+# type and missing/redefined/ambiguous symbol error & type error.
+# There should be no syntax errors here.
+string sfunction = function(int x, float y, string z) {
+    int aa = a ;
+    int a = aa ;
+    float f1 = aa ;
+    float f2 = f3 ;
+    float y = b ;
+    int a = function() {
+        return 2.3;
+    }
+    float x = x;
+    float y = z ;
+    string sz = z ;
+    string szz = x ;
+    q ;
+    string zzzz = sfunction(2.1, 1, 'this should be ok');
+    string zzzzz = sfunction('this should not');
+    string zzzzzz = sfunction('nor should this', 3, aa);
+    string zzzz = 5 * 3 + 2 * f1 ;
+    int aa = function() {
+        return 5 ;
+    }
+    int a = 5 ;
+    int a = 3 + 4.3 * 'oops' + a ;
+    - 'fish' ;
+    ! 8.3 ;
+    ! aa ;
+    ! aaaaaa ;
+    ! x ;
+    x % x ;
+    x ? 1 : b ;
+    return 3.2 ;
+}
+int f = 3.2 ;
+a(3);
+int aaaaaaaaa = f * 2 ;
+int f = function () {
+    return 5.4 ;
+}
+3 + 7.4 ? 1 : 0 ;
+a || b && f1 ;
+a && b || f1 ;
+# Some tests added Feb. 22, 2012 thanks to a student.
+1 + 'a';
+'b' + 2 ;
+int [] iarray = [1, 2, 3];
+string [] sarray = ['a', 'b', 'c'];
+iarray + sarray ;
+iarray + iarray ;

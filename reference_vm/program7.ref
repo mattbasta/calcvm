@@ -1,0 +1,141 @@
+(   (   'funcassign',
+        'fbool1',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'printexpression',
+                (   '~',
+                    'int',
+                    (   ('constant', 'string', 'Value to fbool1:'),
+                        ('id', 'int', 'value')))),),
+        ('return', ('id', 'int', 'value'))),
+    (   'funcassign',
+        'fbool2',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'printexpression',
+                (   '~',
+                    'int',
+                    (   ('constant', 'string', 'Value to fbool2:'),
+                        ('id', 'int', 'value')))),),
+        ('return', ('id', 'int', 'value'))),
+    (   'funcassign',
+        'fbool3',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'printexpression',
+                (   '~',
+                    'int',
+                    (   ('constant', 'string', 'Value to fbool3:'),
+                        ('id', 'int', 'value')))),),
+        ('return', ('id', 'int', 'value'))),
+    (   'printexpression',
+        ('constant', 'string', 'TEST fbool1(0) && fbool2(0) || fbool3(0)')),
+    (   'printexpression',
+        (   '||',
+            'int',
+            (   (   '&&',
+                    'int',
+                    (   (   'funcall',
+                            'int',
+                            'fbool1',
+                            (('constant', 'int', '0'),)),
+                        (   'funcall',
+                            'int',
+                            'fbool2',
+                            (('constant', 'int', '0'),)))),
+                ('funcall', 'int', 'fbool3', (('constant', 'int', '0'),))))),
+    (   'printexpression',
+        ('constant', 'string', 'TEST fbool1(0) && fbool2(0) || fbool3(1)')),
+    (   'printexpression',
+        (   '||',
+            'int',
+            (   (   '&&',
+                    'int',
+                    (   (   'funcall',
+                            'int',
+                            'fbool1',
+                            (('constant', 'int', '0'),)),
+                        (   'funcall',
+                            'int',
+                            'fbool2',
+                            (('constant', 'int', '0'),)))),
+                ('funcall', 'int', 'fbool3', (('constant', 'int', '1'),))))),
+    (   'printexpression',
+        ('constant', 'string', 'TEST fbool1(0) && fbool2(1) || fbool3(0)')),
+    (   'printexpression',
+        (   '||',
+            'int',
+            (   (   '&&',
+                    'int',
+                    (   (   'funcall',
+                            'int',
+                            'fbool1',
+                            (('constant', 'int', '0'),)),
+                        (   'funcall',
+                            'int',
+                            'fbool2',
+                            (('constant', 'int', '1'),)))),
+                ('funcall', 'int', 'fbool3', (('constant', 'int', '0'),))))),
+    (   'printexpression',
+        ('constant', 'string', 'TEST fbool1(0) && fbool2(1) || fbool3(1)')),
+    (   'printexpression',
+        (   '||',
+            'int',
+            (   (   '&&',
+                    'int',
+                    (   (   'funcall',
+                            'int',
+                            'fbool1',
+                            (('constant', 'int', '0'),)),
+                        (   'funcall',
+                            'int',
+                            'fbool2',
+                            (('constant', 'int', '1'),)))),
+                ('funcall', 'int', 'fbool3', (('constant', 'int', '1'),))))))
+counter #depth : 0
+counter #funcs : 3
+counter #locals : 0
+counter #params : 0
+function int global::fbool1
+counter #depth : 1
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+var int global::fbool1::value, frame offset: -2
+function int global::fbool2
+counter #depth : 1
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+var int global::fbool2::value, frame offset: -2
+function int global::fbool3
+counter #depth : 1
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+var int global::fbool3::value, frame offset: -2
+PROGRAM EXECUTION:
+TEST fbool1(0) && fbool2(0) || fbool3(0)
+Value to fbool1:
+0
+Value to fbool3:
+0
+0
+TEST fbool1(0) && fbool2(0) || fbool3(1)
+Value to fbool1:
+0
+Value to fbool3:
+1
+1
+TEST fbool1(0) && fbool2(1) || fbool3(0)
+Value to fbool1:
+0
+Value to fbool3:
+0
+0
+TEST fbool1(0) && fbool2(1) || fbool3(1)
+Value to fbool1:
+0
+Value to fbool3:
+1
+1

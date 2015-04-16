@@ -1,0 +1,40 @@
+# program9.txt adapts one of program3's functions for arrays
+
+string printiarray = function(string prefix, int [] iarray, int i) {
+    return (i > -1 && i < ALEN(iarray))
+        ? printiarray((prefix + ' ' + string(iarray[i])), iarray, i + 1)
+        : prefix ;
+}
+
+# factor1 prints the factors as it finds them.
+int [] factor1 = function(int valueToFactor) {
+    int [] helpFactor = function(int value, int tryfactor, int [] factors) {
+        return ((tryfactor < value) ?
+                ((value % tryfactor == 0) ?
+                    (helpFactor(value / tryfactor, 2, factors + [tryfactor]))
+                    : helpFactor(value,(tryfactor == 2 ? 3 : tryfactor + 2),
+                            factors))
+                : factors + [value]);
+    }
+    return valueToFactor > 1
+        ? ('Good parameter to factor1:' ~ valueToFactor
+            ~ helpFactor(valueToFactor, 2, []))
+        : ('Bad parameter to factor1: ' ~ valueToFactor ~ []) ;
+}
+
+int [] foo27 = factor1(27);
+printiarray('F27: ', foo27, 0);
+int [] foo16 = factor1(16);
+printiarray('F16: ', foo16, 0);
+int [] foo_1 = factor1(-1);
+printiarray('F-1: ', foo_1, 0);
+int [] foo0 = factor1(0);
+printiarray('F0: ', foo0, 0);
+int [] foo1 = factor1(1);
+printiarray('F1: ', foo1, 0);
+int [] foo12 = factor1(12);
+printiarray('F12: ', foo12, 0);
+int [] foo1123456789 = factor1(123456789);
+printiarray('F123456789: ', foo1123456789, 0);
+int [] twoTo30 = factor1(1073741824);
+printiarray('twoTo30: ', twoTo30, 0);

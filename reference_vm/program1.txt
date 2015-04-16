@@ -1,0 +1,20 @@
+# program1.txt should compile OK for assignment 4.
+int a = 2 ;
+int b = 3 + a ;
+int f = function(int b, float c) {
+    b ~ c ;
+    int x = 5 * b ;
+    int innerf = function(int count, string text) {
+        int x = a % 2;
+        text ;
+        return a ;
+    }
+    return x > 7 ? x + 3 : innerf(3, 'stringarg') ;
+}
+f(a, b);
+3 ;
+float f1 = 3 ;
+f1 ;
+float f2 = f(f1, 3);
+string s = 'my string' ;
+s ;

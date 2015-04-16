@@ -1,0 +1,31 @@
+table1 before the sort
+45
+27
+-100
+100
+0
+-1
+1
+5
+table1 after the sort
+-100
+-1
+0
+1
+5
+27
+45
+100
+testing until and if with no else and continue 3
+bypassed the continue
+testing until and if with no else and continue 2
+bypassed the continue
+testing until and if with no else and continue 1
+testing until and if with no else and break 6
+bypassed the break
+testing until and if with no else and break 5
+bypassed the break
+testing until and if with no else and break 4
+VM hit pause instruction
+Resuming a paused VM
+VM halted with exit code 0

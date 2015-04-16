@@ -1,0 +1,6 @@
+This is a simple test, should add 2 and 3 and print 5.
+5
+This is a simple test, should add 2.5 and 3.25 and print 5.75.
+5.75
+This is a simple test, should concatenate "two " and "three" and print "two three".
+two three

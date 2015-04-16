@@ -1,0 +1,367 @@
+(   (   'funcassign',
+        'factorial1',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactorial',
+                ('typedecl', 'int'),
+                (('value', ('typedecl', 'int')),),
+                (),
+                (   'return',
+                    (   '?:',
+                        'int',
+                        (   '>',
+                            'int',
+                            ('id', 'int', 'value'),
+                            ('constant', 'int', '1')),
+                        (   '*',
+                            'int',
+                            ('id', 'int', 'value'),
+                            (   'funcall',
+                                'int',
+                                'helpFactorial',
+                                (   (   '-',
+                                        'int',
+                                        ('id', 'int', 'value'),
+                                        ('constant', 'int', '1')),))),
+                        ('constant', 'int', '1')))),),
+        (   'return',
+            (   '?:',
+                'int',
+                (   '>=',
+                    'int',
+                    ('id', 'int', 'value'),
+                    ('constant', 'int', '0')),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factorial1:'),
+                                ('id', 'int', 'value'))),
+                        (   'funcall',
+                            'int',
+                            'helpFactorial',
+                            (('id', 'int', 'value'),)))),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factorial1: '),
+                                ('id', 'int', 'value'))),
+                        ('constant', 'int', '0')))))),
+    ('printexpression', ('constant', 'string', 'test set 1')),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '2'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '3'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '4'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial1', (('constant', 'int', '5'),))),
+    (   'printexpression',
+        (   'funcall',
+            'int',
+            'factorial1',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'funcassign',
+        'factorial2',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactorial',
+                ('typedecl', 'int'),
+                (   ('value', ('typedecl', 'int')),
+                    ('sofar', ('typedecl', 'int'))),
+                (),
+                (   'return',
+                    (   '?:',
+                        'int',
+                        (   '>',
+                            'int',
+                            ('id', 'int', 'value'),
+                            ('constant', 'int', '1')),
+                        (   'funcall',
+                            'int',
+                            'helpFactorial',
+                            (   (   '-',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('constant', 'int', '1')),
+                                (   '*',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('id', 'int', 'sofar')))),
+                        ('id', 'int', 'sofar')))),),
+        (   'return',
+            (   '?:',
+                'int',
+                (   '>=',
+                    'int',
+                    ('id', 'int', 'value'),
+                    ('constant', 'int', '0')),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factorial2:'),
+                                ('id', 'int', 'value'))),
+                        (   'funcall',
+                            'int',
+                            'helpFactorial',
+                            (   ('id', 'int', 'value'),
+                                ('constant', 'int', '1'))))),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factorial2: '),
+                                ('id', 'int', 'value'))),
+                        ('constant', 'int', '0')))))),
+    ('printexpression', ('constant', 'string', 'test set 2')),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '2'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '3'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '4'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial2', (('constant', 'int', '5'),))),
+    (   'printexpression',
+        (   'funcall',
+            'int',
+            'factorial2',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'varassign',
+        'multIdentity',
+        ('typedecl', 'int'),
+        ('constant', 'int', '1')),
+    (   'funcassign',
+        'factorial3',
+        ('typedecl', 'int'),
+        (('value', ('typedecl', 'int')),),
+        (   (   'varassign',
+                'addIdentity',
+                ('typedecl', 'int'),
+                ('constant', 'int', '0')),
+            (   'funcassign',
+                'inbetween',
+                ('typedecl', 'int'),
+                (('value', ('typedecl', 'int')),),
+                (   (   'funcassign',
+                        'helpFactorial',
+                        ('typedecl', 'int'),
+                        (),
+                        (),
+                        (   'return',
+                            (   '?:',
+                                'int',
+                                (   '>',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('constant', 'int', '1')),
+                                (   '*',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    (   'funcall',
+                                        'int',
+                                        'inbetween',
+                                        (   (   '-',
+                                                'int',
+                                                (   'id',
+                                                    'int',
+                                                    'value'),
+                                                (   'constant',
+                                                    'int',
+                                                    '1')),))),
+                                ('constant', 'int', '1')))),),
+                (   'return',
+                    (   '+',
+                        'int',
+                        ('id', 'int', 'addIdentity'),
+                        (   '*',
+                            'int',
+                            ('funcall', 'int', 'helpFactorial', ()),
+                            ('id', 'int', 'multIdentity')))))),
+        (   'return',
+            (   '?:',
+                'int',
+                (   '>=',
+                    'int',
+                    ('id', 'int', 'value'),
+                    ('constant', 'int', '0')),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factorial3:'),
+                                ('id', 'int', 'value'))),
+                        (   'funcall',
+                            'int',
+                            'inbetween',
+                            (('id', 'int', 'value'),)))),
+                (   '~',
+                    'int',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factorial3: '),
+                                ('id', 'int', 'value'))),
+                        ('constant', 'int', '0')))))),
+    ('printexpression', ('constant', 'string', 'test set 3')),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '2'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '3'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '4'),))),
+    (   'printexpression',
+        ('funcall', 'int', 'factorial3', (('constant', 'int', '5'),))),
+    (   'printexpression',
+        (   'funcall',
+            'int',
+            'factorial3',
+            (('uminus', 'int', ('constant', 'int', '1')),))))
+counter #depth : 0
+counter #funcs : 3
+counter #locals : 1
+counter #params : 0
+function int global::factorial1
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function int global::factorial1::helpFactorial
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+symref helpFactorial from scope global::factorial1::helpFactorial, depth of 1
+var int global::factorial1::helpFactorial::value, frame offset: -2
+var int global::factorial1::value, frame offset: -2
+function int global::factorial2
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function int global::factorial2::helpFactorial
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 0
+counter #params : 2
+symref helpFactorial from scope global::factorial2::helpFactorial, depth of 1
+var int global::factorial2::helpFactorial::sofar, frame offset: -2
+var int global::factorial2::helpFactorial::value, frame offset: -3
+var int global::factorial2::value, frame offset: -2
+function int global::factorial3
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 1
+counter #params : 1
+var int global::factorial3::addIdentity, frame offset: 0
+function int global::factorial3::inbetween
+counter #depth : 2
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+symref addIdentity from scope global::factorial3::inbetween, depth of 1
+function int global::factorial3::inbetween::helpFactorial
+counter #depth : 3
+counter #funcs : 0
+counter #locals : 0
+counter #params : 0
+symref inbetween from scope global::factorial3::inbetween::helpFactorial, depth of 2
+symref value from scope global::factorial3::inbetween::helpFactorial, depth of 1
+symref multIdentity from scope global::factorial3::inbetween, depth of 2
+var int global::factorial3::inbetween::value, frame offset: -2
+var int global::factorial3::value, frame offset: -2
+var int global::multIdentity, frame offset: 0
+PROGRAM EXECUTION:
+test set 1
+Good parameter to factorial1:
+0
+1
+Good parameter to factorial1:
+1
+1
+Good parameter to factorial1:
+2
+2
+Good parameter to factorial1:
+3
+6
+Good parameter to factorial1:
+4
+24
+Good parameter to factorial1:
+5
+120
+Bad parameter to factorial1: 
+-1
+0
+test set 2
+Good parameter to factorial2:
+0
+1
+Good parameter to factorial2:
+1
+1
+Good parameter to factorial2:
+2
+2
+Good parameter to factorial2:
+3
+6
+Good parameter to factorial2:
+4
+24
+Good parameter to factorial2:
+5
+120
+Bad parameter to factorial2: 
+-1
+0
+test set 3
+Good parameter to factorial3:
+0
+1
+Good parameter to factorial3:
+1
+1
+Good parameter to factorial3:
+2
+2
+Good parameter to factorial3:
+3
+6
+Good parameter to factorial3:
+4
+24
+Good parameter to factorial3:
+5
+120
+Bad parameter to factorial3: 
+-1
+0

@@ -1,0 +1,66 @@
+# program5.txt holds three variations of a working factorial program.
+
+# factorial1 returns n factorial or 0 on an error
+int factorial1 = function(int value) {
+    int helpFactorial = function(int value) {
+        return ((value > 1) ?
+                value * helpFactorial(value - 1) : 1);
+    }
+    return value >= 0
+        ? ('Good parameter to factorial1:' ~ value
+            ~ helpFactorial(value))
+        : ('Bad parameter to factorial1: ' ~ value ~ 0) ;
+}
+'test set 1';
+factorial1(0);
+factorial1(1);
+factorial1(2);
+factorial1(3);
+factorial1(4);
+factorial1(5);
+factorial1(-1);
+
+# factorial2 uses tail recursion internally
+int factorial2 = function(int value) {
+    int helpFactorial = function(int value, int sofar) {
+        return ((value > 1) ?
+                helpFactorial(value - 1, value * sofar) : sofar);
+    }
+    return value >= 0
+        ? ('Good parameter to factorial2:' ~ value
+            ~ helpFactorial(value, 1))
+        : ('Bad parameter to factorial2: ' ~ value ~ 0) ;
+}
+'test set 2';
+factorial2(0);
+factorial2(1);
+factorial2(2);
+factorial2(3);
+factorial2(4);
+factorial2(5);
+factorial2(-1);
+
+int multIdentity = 1 ;
+# factorial3 requires resolution of static scope for function calls
+int factorial3 = function(int value) {
+    int addIdentity = 0 ;
+    int inbetween = function(int value) {
+        int helpFactorial = function() {
+            return ((value > 1) ?
+                    value * inbetween(value - 1) : 1);
+        }
+        return addIdentity + helpFactorial() * multIdentity ;
+    }
+    return value >= 0
+        ? ('Good parameter to factorial3:' ~ value
+            ~ inbetween(value))
+        : ('Bad parameter to factorial3: ' ~ value ~ 0) ;
+}
+'test set 3';
+factorial3(0);
+factorial3(1);
+factorial3(2);
+factorial3(3);
+factorial3(4);
+factorial3(5);
+factorial3(-1);

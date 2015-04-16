@@ -1,0 +1,19 @@
+/*  Implementation of a StemVM op code class. */
+
+package newvm3.stepvm ;
+import net.jcip.annotations.* ;
+
+@Immutable
+/**
+ *  BEFORE --> AFTER
+ *  (with top-of-dataStack to the right).
+**/
+public class TEMPLATE extends StepOpCodeHelper implements StepOpCode {
+    public void eval(StepVM vm, int context) {
+        verifyStacks(vm, context, 000, 000);
+        Object [] dstack = vm.dataStack[context] ;
+        int ds = vm.ds[context];
+        int ip = vm.ip[context];
+        vm.ip[context] += 1 ;
+    }
+}

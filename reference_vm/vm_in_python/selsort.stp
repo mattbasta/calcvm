@@ -1,0 +1,96 @@
+// selsort.stp -- selection sort test of "if" and "while"
+
+proc selsort		// array-addr count ==> (array sorted, nothing on stack)
+    // Forth doesn't have function-static variables but step does,
+    // here is a test of them
+    variable my_array
+    swap my_array @s	// stick array address in this my_array
+    // The outer loop keeps "count-1 i" on the stack, iterating through
+    // i = 0 through i = count-2. i selects the next element.
+    // The inner loop pushes "count j" on top of "count i," i.e.,
+    // "count i count j" where j = i+1 through count-1. j inspects values
+    1- 0		// count i ("count" is original "count" - 1)
+    while over over >	// count i
+    do
+        over over 1+	// count i count j (j = i+1 through  n)
+	    while over over >=
+        do
+            over2 my_array @f + @f	// count i count j array[i]
+            over my_array @f + @f	// count i count j array[i] array[j]
+            if over over >		// count i count j array[i] array[j] >
+            then
+                // store array[i] at j
+                swap over2 my_array @f + @s	// count i count j array[j]
+                // store array[j] at i
+                3 dupi my_array @f + @s		// count i count j
+            else
+                drop2				// count i count j
+            endif
+            1+					// increment j
+        endwhile
+        drop2					// count i
+        1+					// increment i
+    endwhile
+    drop2					// inputs args. discarded
+endproc
+
+proc dumparray	// array-addr count ==> (array printed, nothing on stack)
+    0			// array-addr count index
+    while over over >
+    do
+        over2 over + @f printi crlf	// array-addr count index
+        1+				// bump the index
+    endwhile
+    drop2 drop
+endproc
+
+// make table1 global so we get a debugger symbol
+table table1 45 27 -100 100 0 -1 1 5 endtable
+array array32 32
+
+proc nonsense
+    3
+    dountil
+        "testing until and if with no else and continue " prints
+        dup printi crlf
+        1-
+        dup
+        if 0== then
+            drop
+            1
+            continue
+        else 
+            0
+        endif
+        "bypassed the continue" prints crlf
+    until
+    enduntil
+    drop
+    6
+    dountil
+        "testing until and if with no else and break " prints
+        dup printi crlf
+        1-
+        dup
+        if 3 == then
+            pause
+            break
+        endif
+        "bypassed the break" prints crlf
+    until dup 0==
+    enduntil
+endproc
+
+proc main
+    "table1 before the sort" prints crlf
+    table1 8 dumparray
+    "table1 after the sort" prints crlf
+    table1 8 selsort
+    table1 8 dumparray
+    nonsense
+    0   // exit status
+endproc
+// main
+
+constant arraylen 16
+array array16 arraylen

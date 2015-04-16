@@ -1,0 +1,426 @@
+PROGRAM MID LINK BEFORE BACKPATCHING:
+0*	FUNCTION outermost scope	***************
+0:	STEP_CONST
+1:	TEST fbool1(0) && fbool2(0) || fbool3(0)
+2:	STEP_PRINT
+3:	STEP_CRLF
+4:	STEP_CONST
+5:	0
+6:	STEP_PUSH_FP
+7:	STEP_CALL_SECONDARY
+8:	['func', 'fbool1', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 121]
+9:	STEP_DUP
+10:	STEP_GOTO0
+11:	(7,)
+12:	STEP_DROP
+13:	STEP_CONST
+14:	0
+15:	STEP_PUSH_FP
+16:	STEP_CALL_SECONDARY
+17:	['func', 'fbool2', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 149]
+18:	STEP_DUP
+19:	STEP_ZEQ
+20:	STEP_GOTO0
+21:	(7,)
+22:	STEP_DROP
+23:	STEP_CONST
+24:	0
+25:	STEP_PUSH_FP
+26:	STEP_CALL_SECONDARY
+27:	['func', 'fbool3', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 177]
+28:	STEP_PRINT
+29:	STEP_CRLF
+30:	STEP_CONST
+31:	TEST fbool1(0) && fbool2(0) || fbool3(1)
+32:	STEP_PRINT
+33:	STEP_CRLF
+34:	STEP_CONST
+35:	0
+36:	STEP_PUSH_FP
+37:	STEP_CALL_SECONDARY
+38:	['func', 'fbool1', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 121]
+39:	STEP_DUP
+40:	STEP_GOTO0
+41:	(7,)
+42:	STEP_DROP
+43:	STEP_CONST
+44:	0
+45:	STEP_PUSH_FP
+46:	STEP_CALL_SECONDARY
+47:	['func', 'fbool2', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 149]
+48:	STEP_DUP
+49:	STEP_ZEQ
+50:	STEP_GOTO0
+51:	(7,)
+52:	STEP_DROP
+53:	STEP_CONST
+54:	1
+55:	STEP_PUSH_FP
+56:	STEP_CALL_SECONDARY
+57:	['func', 'fbool3', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 177]
+58:	STEP_PRINT
+59:	STEP_CRLF
+60:	STEP_CONST
+61:	TEST fbool1(0) && fbool2(1) || fbool3(0)
+62:	STEP_PRINT
+63:	STEP_CRLF
+64:	STEP_CONST
+65:	0
+66:	STEP_PUSH_FP
+67:	STEP_CALL_SECONDARY
+68:	['func', 'fbool1', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 121]
+69:	STEP_DUP
+70:	STEP_GOTO0
+71:	(7,)
+72:	STEP_DROP
+73:	STEP_CONST
+74:	1
+75:	STEP_PUSH_FP
+76:	STEP_CALL_SECONDARY
+77:	['func', 'fbool2', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 149]
+78:	STEP_DUP
+79:	STEP_ZEQ
+80:	STEP_GOTO0
+81:	(7,)
+82:	STEP_DROP
+83:	STEP_CONST
+84:	0
+85:	STEP_PUSH_FP
+86:	STEP_CALL_SECONDARY
+87:	['func', 'fbool3', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 177]
+88:	STEP_PRINT
+89:	STEP_CRLF
+90:	STEP_CONST
+91:	TEST fbool1(0) && fbool2(1) || fbool3(1)
+92:	STEP_PRINT
+93:	STEP_CRLF
+94:	STEP_CONST
+95:	0
+96:	STEP_PUSH_FP
+97:	STEP_CALL_SECONDARY
+98:	['func', 'fbool1', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 121]
+99:	STEP_DUP
+100:	STEP_GOTO0
+101:	(7,)
+102:	STEP_DROP
+103:	STEP_CONST
+104:	1
+105:	STEP_PUSH_FP
+106:	STEP_CALL_SECONDARY
+107:	['func', 'fbool2', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 149]
+108:	STEP_DUP
+109:	STEP_ZEQ
+110:	STEP_GOTO0
+111:	(7,)
+112:	STEP_DROP
+113:	STEP_CONST
+114:	1
+115:	STEP_PUSH_FP
+116:	STEP_CALL_SECONDARY
+117:	['func', 'fbool3', 'int', (('value', ('typedecl', 'int')),), {'#locals': 0, '#params': 1, '#depth': 1, 'value': ('var', 'value', 'int', -2), '#funcs': 0}, 177]
+118:	STEP_PRINT
+119:	STEP_CRLF
+120:	STEP_PAUSE
+121*	FUNCTION outer scope::fbool1	***************
+121:	STEP_CONST
+122:	Value to fbool1:
+123:	STEP_PRINT
+124:	STEP_CRLF
+125:	STEP_PUSH_FP
+126:	STEP_CONST
+127:	-2
+128:	STEP_ADD
+129:	STEP_FETCH_STACK
+130:	STEP_PRINT
+131:	STEP_CRLF
+132:	STEP_PUSH_FP
+133:	STEP_CONST
+134:	-2
+135:	STEP_ADD
+136:	STEP_FETCH_STACK
+137:	STEP_CONST
+138:	0
+139:	STEP_STORE
+140:	STEP_CONST
+141:	-2
+142:	STEP_CONST
+143:	-1
+144:	STEP_DROPFRAME
+145:	STEP_CONST
+146:	0
+147:	STEP_FETCH
+148:	STEP_RETURN
+149*	FUNCTION outer scope::fbool2	***************
+149:	STEP_CONST
+150:	Value to fbool2:
+151:	STEP_PRINT
+152:	STEP_CRLF
+153:	STEP_PUSH_FP
+154:	STEP_CONST
+155:	-2
+156:	STEP_ADD
+157:	STEP_FETCH_STACK
+158:	STEP_PRINT
+159:	STEP_CRLF
+160:	STEP_PUSH_FP
+161:	STEP_CONST
+162:	-2
+163:	STEP_ADD
+164:	STEP_FETCH_STACK
+165:	STEP_CONST
+166:	0
+167:	STEP_STORE
+168:	STEP_CONST
+169:	-2
+170:	STEP_CONST
+171:	-1
+172:	STEP_DROPFRAME
+173:	STEP_CONST
+174:	0
+175:	STEP_FETCH
+176:	STEP_RETURN
+177*	FUNCTION outer scope::fbool3	***************
+177:	STEP_CONST
+178:	Value to fbool3:
+179:	STEP_PRINT
+180:	STEP_CRLF
+181:	STEP_PUSH_FP
+182:	STEP_CONST
+183:	-2
+184:	STEP_ADD
+185:	STEP_FETCH_STACK
+186:	STEP_PRINT
+187:	STEP_CRLF
+188:	STEP_PUSH_FP
+189:	STEP_CONST
+190:	-2
+191:	STEP_ADD
+192:	STEP_FETCH_STACK
+193:	STEP_CONST
+194:	0
+195:	STEP_STORE
+196:	STEP_CONST
+197:	-2
+198:	STEP_CONST
+199:	-1
+200:	STEP_DROPFRAME
+201:	STEP_CONST
+202:	0
+203:	STEP_FETCH
+204:	STEP_RETURN
+PROGRAM LINK AFTER BACKPATCHING:
+0*	FUNCTION outermost scope	***************
+0:	STEP_CONST
+1:	TEST fbool1(0) && fbool2(0) || fbool3(0)
+2:	STEP_PRINT
+3:	STEP_CRLF
+4:	STEP_CONST
+5:	0
+6:	STEP_PUSH_FP
+7:	STEP_CALL_SECONDARY
+8:	121
+9:	STEP_DUP
+10:	STEP_GOTO0
+11:	18
+12:	STEP_DROP
+13:	STEP_CONST
+14:	0
+15:	STEP_PUSH_FP
+16:	STEP_CALL_SECONDARY
+17:	149
+18:	STEP_DUP
+19:	STEP_ZEQ
+20:	STEP_GOTO0
+21:	28
+22:	STEP_DROP
+23:	STEP_CONST
+24:	0
+25:	STEP_PUSH_FP
+26:	STEP_CALL_SECONDARY
+27:	177
+28:	STEP_PRINT
+29:	STEP_CRLF
+30:	STEP_CONST
+31:	TEST fbool1(0) && fbool2(0) || fbool3(1)
+32:	STEP_PRINT
+33:	STEP_CRLF
+34:	STEP_CONST
+35:	0
+36:	STEP_PUSH_FP
+37:	STEP_CALL_SECONDARY
+38:	121
+39:	STEP_DUP
+40:	STEP_GOTO0
+41:	48
+42:	STEP_DROP
+43:	STEP_CONST
+44:	0
+45:	STEP_PUSH_FP
+46:	STEP_CALL_SECONDARY
+47:	149
+48:	STEP_DUP
+49:	STEP_ZEQ
+50:	STEP_GOTO0
+51:	58
+52:	STEP_DROP
+53:	STEP_CONST
+54:	1
+55:	STEP_PUSH_FP
+56:	STEP_CALL_SECONDARY
+57:	177
+58:	STEP_PRINT
+59:	STEP_CRLF
+60:	STEP_CONST
+61:	TEST fbool1(0) && fbool2(1) || fbool3(0)
+62:	STEP_PRINT
+63:	STEP_CRLF
+64:	STEP_CONST
+65:	0
+66:	STEP_PUSH_FP
+67:	STEP_CALL_SECONDARY
+68:	121
+69:	STEP_DUP
+70:	STEP_GOTO0
+71:	78
+72:	STEP_DROP
+73:	STEP_CONST
+74:	1
+75:	STEP_PUSH_FP
+76:	STEP_CALL_SECONDARY
+77:	149
+78:	STEP_DUP
+79:	STEP_ZEQ
+80:	STEP_GOTO0
+81:	88
+82:	STEP_DROP
+83:	STEP_CONST
+84:	0
+85:	STEP_PUSH_FP
+86:	STEP_CALL_SECONDARY
+87:	177
+88:	STEP_PRINT
+89:	STEP_CRLF
+90:	STEP_CONST
+91:	TEST fbool1(0) && fbool2(1) || fbool3(1)
+92:	STEP_PRINT
+93:	STEP_CRLF
+94:	STEP_CONST
+95:	0
+96:	STEP_PUSH_FP
+97:	STEP_CALL_SECONDARY
+98:	121
+99:	STEP_DUP
+100:	STEP_GOTO0
+101:	108
+102:	STEP_DROP
+103:	STEP_CONST
+104:	1
+105:	STEP_PUSH_FP
+106:	STEP_CALL_SECONDARY
+107:	149
+108:	STEP_DUP
+109:	STEP_ZEQ
+110:	STEP_GOTO0
+111:	118
+112:	STEP_DROP
+113:	STEP_CONST
+114:	1
+115:	STEP_PUSH_FP
+116:	STEP_CALL_SECONDARY
+117:	177
+118:	STEP_PRINT
+119:	STEP_CRLF
+120:	STEP_PAUSE
+121*	FUNCTION outer scope::fbool1	***************
+121:	STEP_CONST
+122:	Value to fbool1:
+123:	STEP_PRINT
+124:	STEP_CRLF
+125:	STEP_PUSH_FP
+126:	STEP_CONST
+127:	-2
+128:	STEP_ADD
+129:	STEP_FETCH_STACK
+130:	STEP_PRINT
+131:	STEP_CRLF
+132:	STEP_PUSH_FP
+133:	STEP_CONST
+134:	-2
+135:	STEP_ADD
+136:	STEP_FETCH_STACK
+137:	STEP_CONST
+138:	0
+139:	STEP_STORE
+140:	STEP_CONST
+141:	-2
+142:	STEP_CONST
+143:	-1
+144:	STEP_DROPFRAME
+145:	STEP_CONST
+146:	0
+147:	STEP_FETCH
+148:	STEP_RETURN
+149*	FUNCTION outer scope::fbool2	***************
+149:	STEP_CONST
+150:	Value to fbool2:
+151:	STEP_PRINT
+152:	STEP_CRLF
+153:	STEP_PUSH_FP
+154:	STEP_CONST
+155:	-2
+156:	STEP_ADD
+157:	STEP_FETCH_STACK
+158:	STEP_PRINT
+159:	STEP_CRLF
+160:	STEP_PUSH_FP
+161:	STEP_CONST
+162:	-2
+163:	STEP_ADD
+164:	STEP_FETCH_STACK
+165:	STEP_CONST
+166:	0
+167:	STEP_STORE
+168:	STEP_CONST
+169:	-2
+170:	STEP_CONST
+171:	-1
+172:	STEP_DROPFRAME
+173:	STEP_CONST
+174:	0
+175:	STEP_FETCH
+176:	STEP_RETURN
+177*	FUNCTION outer scope::fbool3	***************
+177:	STEP_CONST
+178:	Value to fbool3:
+179:	STEP_PRINT
+180:	STEP_CRLF
+181:	STEP_PUSH_FP
+182:	STEP_CONST
+183:	-2
+184:	STEP_ADD
+185:	STEP_FETCH_STACK
+186:	STEP_PRINT
+187:	STEP_CRLF
+188:	STEP_PUSH_FP
+189:	STEP_CONST
+190:	-2
+191:	STEP_ADD
+192:	STEP_FETCH_STACK
+193:	STEP_CONST
+194:	0
+195:	STEP_STORE
+196:	STEP_CONST
+197:	-2
+198:	STEP_CONST
+199:	-1
+200:	STEP_DROPFRAME
+201:	STEP_CONST
+202:	0
+203:	STEP_FETCH
+204:	STEP_RETURN
+UNINTERPRETED DUMP OF THE ENTIRE DATA_DICTIONARY:
+[1, None, 4, 9223372036854775807, 0, 4]
+DEBUG HEAP: size of data_dictionary = 6.
+DEBUG HEAP: free list pointer at location 1 = None.
+DEBUG HEAP @ 2: HDR=4|RFC=9223372036854775807|0|4
+FOOTER@5 = 4.

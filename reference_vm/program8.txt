@@ -1,0 +1,49 @@
+# program8.txt tests array type declarations, values, etc.
+
+int i = 1 ;
+
+int [] iarray1 = [1, 2, 3];
+
+int [] iarray2 = [1, 2.0, -3];
+
+int [] iarray3 = [   ]  ;
+
+int [] iarray4 = iarray1 + iarray2 ;
+
+int [] iarray5 = iarray1 + iarray3 + [i, 1] + [] ;
+
+float [] farray1 = [1.0, -2.5, 3];
+
+float [] farray2 = [];
+
+int [] iarray6 = farray1 + iarray1;
+
+float [] farray3 = farray1 + iarray1 ;
+
+'test 1' ;
+iarray1[1] ;
+
+string printiarray = function(string prefix, int [] iarray, int i) {
+    return (i > -1 && i < ALEN(iarray))
+        ? printiarray((prefix + ' ' + string(iarray[i])), iarray, i + 1)
+        : prefix ;
+    
+}
+
+string printfarray = function(string prefix, float [] farray, int i) {
+    return (i > -1 && i < ALEN(farray))
+        ? printfarray((prefix + ' ' + string(farray[i])), farray, i + 1)
+        : prefix ;
+    
+}
+
+printiarray('test iarray1', iarray1, 0);
+printiarray('test iarray2', iarray2, 0);
+printiarray('test iarray3', iarray3, 0);
+printfarray('test farray1', farray1, 0);
+printfarray('test farray2', farray2, 0);
+printiarray('test i farray1', farray1, 0);
+printiarray('test i farray2', farray2, 0);
+printfarray('test f iarray1', iarray1, 0);
+printfarray('test f iarray2', iarray2, 0);
+printfarray('test f iarray3', iarray3, 0);

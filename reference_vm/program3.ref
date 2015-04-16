@@ -1,0 +1,861 @@
+(   (   'funcassign',
+        'factor1',
+        ('typedecl', 'string'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'string'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int'))),
+                (),
+                (   'return',
+                    (   '?:',
+                        'string',
+                        (   '<',
+                            'int',
+                            ('id', 'int', 'tryfactor'),
+                            ('id', 'int', 'value')),
+                        (   '?:',
+                            'string',
+                            (   '==',
+                                'int',
+                                (   '%',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('id', 'int', 'tryfactor')),
+                                ('constant', 'int', '0')),
+                            (   '~',
+                                'string',
+                                (   ('id', 'int', 'tryfactor'),
+                                    (   'funcall',
+                                        'string',
+                                        'helpFactor',
+                                        (   (   '/',
+                                                'int',
+                                                (   'id',
+                                                    'int',
+                                                    'value'),
+                                                (   'id',
+                                                    'int',
+                                                    'tryfactor')),
+                                            ('constant', 'int', '2'))))),
+                            (   'funcall',
+                                'string',
+                                'helpFactor',
+                                (   ('id', 'int', 'value'),
+                                    (   '+',
+                                        'int',
+                                        ('id', 'int', 'tryfactor'),
+                                        ('constant', 'int', '1'))))),
+                        (   '~',
+                            'string',
+                            (   ('id', 'int', 'value'),
+                                ('constant', 'string', 'good')))))),),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'valueToFactor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor1:'),
+                                ('id', 'int', 'valueToFactor'))),
+                        (   'funcall',
+                            'string',
+                            'helpFactor',
+                            (   ('id', 'int', 'valueToFactor'),
+                                ('constant', 'int', '2'))))),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor1: '),
+                                ('id', 'int', 'valueToFactor'))),
+                        ('constant', 'string', 'bad')))))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor1', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor1', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'factor1',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor1', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor1', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor1', (('constant', 'int', '12'),))),
+    (   'funcassign',
+        'factor2',
+        ('typedecl', 'string'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'varassign',
+                'value2factor',
+                ('typedecl', 'int'),
+                (   '+',
+                    'int',
+                    ('constant', 'int', '0'),
+                    (   '/',
+                        'int',
+                        (   '*',
+                            'int',
+                            ('id', 'int', 'valueToFactor'),
+                            ('constant', 'int', '1')),
+                        ('constant', 'int', '1')))),
+            (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'string'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int'))),
+                (),
+                (   'return',
+                    (   '?:',
+                        'string',
+                        (   '<',
+                            'int',
+                            ('id', 'int', 'tryfactor'),
+                            ('id', 'int', 'value')),
+                        (   '?:',
+                            'string',
+                            (   '==',
+                                'int',
+                                (   '%',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('id', 'int', 'tryfactor')),
+                                ('constant', 'int', '0')),
+                            (   '~',
+                                'string',
+                                (   ('id', 'int', 'tryfactor'),
+                                    (   'funcall',
+                                        'string',
+                                        'factor2',
+                                        (   (   '/',
+                                                'int',
+                                                (   'id',
+                                                    'int',
+                                                    'value'),
+                                                (   'id',
+                                                    'int',
+                                                    'tryfactor')),)))),
+                            (   'funcall',
+                                'string',
+                                'helpFactor',
+                                (   ('id', 'int', 'value'),
+                                    (   '+',
+                                        'int',
+                                        ('id', 'int', 'tryfactor'),
+                                        ('constant', 'int', '1'))))),
+                        (   '~',
+                            'string',
+                            (   ('id', 'int', 'value'),
+                                ('constant', 'string', 'good'))))))),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'value2factor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor2:'),
+                                ('id', 'int', 'value2factor'))),
+                        (   'funcall',
+                            'string',
+                            'helpFactor',
+                            (   ('id', 'int', 'value2factor'),
+                                ('constant', 'int', '2'))))),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor2: '),
+                                ('id', 'int', 'value2factor'))),
+                        ('constant', 'string', 'bad')))))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor2', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor2', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'factor2',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor2', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor2', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor2', (('constant', 'int', '12'),))),
+    (   'funcassign',
+        'factor3',
+        ('typedecl', 'string'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'varassign',
+                'value2factor',
+                ('typedecl', 'int'),
+                (   '+',
+                    'int',
+                    ('constant', 'int', '0'),
+                    (   '/',
+                        'int',
+                        (   '*',
+                            'int',
+                            ('id', 'int', 'valueToFactor'),
+                            ('constant', 'int', '1')),
+                        ('constant', 'int', '1')))),
+            (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'string'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int'))),
+                (   (   'funcassign',
+                        'helpDeep',
+                        ('typedecl', 'string'),
+                        (),
+                        (),
+                        (   'return',
+                            (   '?:',
+                                'string',
+                                (   '<',
+                                    'int',
+                                    ('id', 'int', 'tryfactor'),
+                                    ('id', 'int', 'value')),
+                                (   '?:',
+                                    'string',
+                                    (   '==',
+                                        'int',
+                                        (   '%',
+                                            'int',
+                                            ('id', 'int', 'value'),
+                                            (   'id',
+                                                'int',
+                                                'tryfactor')),
+                                        ('constant', 'int', '0')),
+                                    (   '~',
+                                        'string',
+                                        (   (   'id',
+                                                'int',
+                                                'tryfactor'),
+                                            (   'funcall',
+                                                'string',
+                                                'factor3',
+                                                (   (   '/',
+                                                        'int',
+                                                        (   'id',
+                                                            'int',
+                                                            'value'),
+                                                        (   'id',
+                                                            'int',
+                                                            'tryfactor')),)))),
+                                    (   'funcall',
+                                        'string',
+                                        'helpFactor',
+                                        (   ('id', 'int', 'value'),
+                                            (   '+',
+                                                'int',
+                                                (   'id',
+                                                    'int',
+                                                    'tryfactor'),
+                                                (   'constant',
+                                                    'int',
+                                                    '1'))))),
+                                (   '~',
+                                    'string',
+                                    (   ('id', 'int', 'value'),
+                                        (   'constant',
+                                            'string',
+                                            'good')))))),),
+                ('return', ('funcall', 'string', 'helpDeep', ())))),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'value2factor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor3:'),
+                                ('id', 'int', 'value2factor'))),
+                        (   'funcall',
+                            'string',
+                            'helpFactor',
+                            (   ('id', 'int', 'value2factor'),
+                                ('constant', 'int', '2'))))),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor3: '),
+                                ('id', 'int', 'value2factor'))),
+                        ('constant', 'string', 'bad')))))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor3', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor3', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'factor3',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor3', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor3', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor3', (('constant', 'int', '12'),))),
+    (   'funcassign',
+        'factor4',
+        ('typedecl', 'string'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'string'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int'))),
+                (   (   'funcassign',
+                        'deep4',
+                        ('typedecl', 'string'),
+                        (('value', ('typedecl', 'int')),),
+                        (),
+                        (   'return',
+                            (   '?:',
+                                'string',
+                                (   '<',
+                                    'int',
+                                    ('id', 'int', 'tryfactor'),
+                                    ('id', 'int', 'value')),
+                                (   '?:',
+                                    'string',
+                                    (   '==',
+                                        'int',
+                                        (   '%',
+                                            'int',
+                                            ('id', 'int', 'value'),
+                                            (   'id',
+                                                'int',
+                                                'tryfactor')),
+                                        ('constant', 'int', '0')),
+                                    (   '~',
+                                        'string',
+                                        (   (   'id',
+                                                'int',
+                                                'tryfactor'),
+                                            (   'funcall',
+                                                'string',
+                                                'helpFactor',
+                                                (   (   '/',
+                                                        'int',
+                                                        (   'id',
+                                                            'int',
+                                                            'value'),
+                                                        (   'id',
+                                                            'int',
+                                                            'tryfactor')),
+                                                    (   'constant',
+                                                        'int',
+                                                        '2'))))),
+                                    (   'funcall',
+                                        'string',
+                                        'helpFactor',
+                                        (   ('id', 'int', 'value'),
+                                            (   '+',
+                                                'int',
+                                                (   'id',
+                                                    'int',
+                                                    'tryfactor'),
+                                                (   'constant',
+                                                    'int',
+                                                    '1'))))),
+                                (   '~',
+                                    'string',
+                                    (   ('id', 'int', 'value'),
+                                        (   'constant',
+                                            'string',
+                                            'good')))))),),
+                (   'return',
+                    (   'funcall',
+                        'string',
+                        'deep4',
+                        (('id', 'int', 'value'),)))),),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'valueToFactor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor4:'),
+                                ('id', 'int', 'valueToFactor'))),
+                        (   'funcall',
+                            'string',
+                            'helpFactor',
+                            (   ('id', 'int', 'valueToFactor'),
+                                ('constant', 'int', '2'))))),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor4: '),
+                                ('id', 'int', 'valueToFactor'))),
+                        ('constant', 'string', 'bad')))))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor4', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor4', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'factor4',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor4', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor4', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor4', (('constant', 'int', '12'),))),
+    (   'funcassign',
+        'factor5',
+        ('typedecl', 'string'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'string'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int'))),
+                (   (   'funcassign',
+                        'deep4',
+                        ('typedecl', 'string'),
+                        (('value', ('typedecl', 'int')),),
+                        (   (   'funcassign',
+                                'deepest',
+                                ('typedecl', 'string'),
+                                (('unused', ('typedecl', 'int')),),
+                                (),
+                                (   'return',
+                                    (   '?:',
+                                        'string',
+                                        (   '<',
+                                            'int',
+                                            (   'id',
+                                                'int',
+                                                'tryfactor'),
+                                            ('id', 'int', 'value')),
+                                        (   '?:',
+                                            'string',
+                                            (   '==',
+                                                'int',
+                                                (   '%',
+                                                    'int',
+                                                    (   'id',
+                                                        'int',
+                                                        'value'),
+                                                    (   'id',
+                                                        'int',
+                                                        'tryfactor')),
+                                                (   'constant',
+                                                    'int',
+                                                    '0')),
+                                            (   '~',
+                                                'string',
+                                                (   (   'id',
+                                                        'int',
+                                                        'tryfactor'),
+                                                    (   'funcall',
+                                                        'string',
+                                                        'helpFactor',
+                                                        (   (   '/',
+                                                                'int',
+                                                                (   'id',
+                                                                    'int',
+                                                                    'value'),
+                                                                (   'id',
+                                                                    'int',
+                                                                    'tryfactor')),
+                                                            (   'constant',
+                                                                'int',
+                                                                '2'))))),
+                                            (   'funcall',
+                                                'string',
+                                                'helpFactor',
+                                                (   (   'id',
+                                                        'int',
+                                                        'value'),
+                                                    (   '+',
+                                                        'int',
+                                                        (   'id',
+                                                            'int',
+                                                            'tryfactor'),
+                                                        (   'constant',
+                                                            'int',
+                                                            '1'))))),
+                                        (   '~',
+                                            'string',
+                                            (   (   'id',
+                                                    'int',
+                                                    'value'),
+                                                (   'constant',
+                                                    'string',
+                                                    'good')))))),),
+                        (   'return',
+                            (   'funcall',
+                                'string',
+                                'deepest',
+                                (('id', 'int', 'valueToFactor'),)))),),
+                (   'return',
+                    (   'funcall',
+                        'string',
+                        'deep4',
+                        (('id', 'int', 'value'),)))),),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'valueToFactor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor5:'),
+                                ('id', 'int', 'valueToFactor'))),
+                        (   'funcall',
+                            'string',
+                            'helpFactor',
+                            (   ('id', 'int', 'valueToFactor'),
+                                ('constant', 'int', '2'))))),
+                (   '~',
+                    'string',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor5: '),
+                                ('id', 'int', 'valueToFactor'))),
+                        ('constant', 'string', 'bad')))))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor5', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor5', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'factor5',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor5', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor5', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        ('funcall', 'string', 'factor5', (('constant', 'int', '12'),))))
+counter #depth : 0
+counter #funcs : 5
+counter #locals : 0
+counter #params : 0
+function string global::factor1
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function string global::factor1::helpFactor
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 0
+counter #params : 2
+symref helpFactor from scope global::factor1::helpFactor, depth of 1
+var int global::factor1::helpFactor::tryfactor, frame offset: -2
+var int global::factor1::helpFactor::value, frame offset: -3
+var int global::factor1::valueToFactor, frame offset: -2
+function string global::factor2
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 1
+counter #params : 1
+function string global::factor2::helpFactor
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 0
+counter #params : 2
+symref factor2 from scope global::factor2::helpFactor, depth of 2
+symref helpFactor from scope global::factor2::helpFactor, depth of 1
+var int global::factor2::helpFactor::tryfactor, frame offset: -2
+var int global::factor2::helpFactor::value, frame offset: -3
+var int global::factor2::value2factor, frame offset: 0
+var int global::factor2::valueToFactor, frame offset: -2
+function string global::factor3
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 1
+counter #params : 1
+function string global::factor3::helpFactor
+counter #depth : 2
+counter #funcs : 1
+counter #locals : 0
+counter #params : 2
+function string global::factor3::helpFactor::helpDeep
+counter #depth : 3
+counter #funcs : 0
+counter #locals : 0
+counter #params : 0
+symref factor3 from scope global::factor3::helpFactor::helpDeep, depth of 3
+symref helpFactor from scope global::factor3::helpFactor::helpDeep, depth of 2
+symref tryfactor from scope global::factor3::helpFactor::helpDeep, depth of 1
+symref value from scope global::factor3::helpFactor::helpDeep, depth of 1
+var int global::factor3::helpFactor::tryfactor, frame offset: -2
+var int global::factor3::helpFactor::value, frame offset: -3
+var int global::factor3::value2factor, frame offset: 0
+var int global::factor3::valueToFactor, frame offset: -2
+function string global::factor4
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function string global::factor4::helpFactor
+counter #depth : 2
+counter #funcs : 1
+counter #locals : 0
+counter #params : 2
+function string global::factor4::helpFactor::deep4
+counter #depth : 3
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+symref helpFactor from scope global::factor4::helpFactor::deep4, depth of 2
+symref tryfactor from scope global::factor4::helpFactor::deep4, depth of 1
+var int global::factor4::helpFactor::deep4::value, frame offset: -2
+var int global::factor4::helpFactor::tryfactor, frame offset: -2
+var int global::factor4::helpFactor::value, frame offset: -3
+var int global::factor4::valueToFactor, frame offset: -2
+function string global::factor5
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function string global::factor5::helpFactor
+counter #depth : 2
+counter #funcs : 1
+counter #locals : 0
+counter #params : 2
+function string global::factor5::helpFactor::deep4
+counter #depth : 3
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function string global::factor5::helpFactor::deep4::deepest
+counter #depth : 4
+counter #funcs : 0
+counter #locals : 0
+counter #params : 1
+symref helpFactor from scope global::factor5::helpFactor::deep4::deepest, depth of 3
+symref tryfactor from scope global::factor5::helpFactor::deep4::deepest, depth of 2
+var int global::factor5::helpFactor::deep4::deepest::unused, frame offset: -2
+symref value from scope global::factor5::helpFactor::deep4::deepest, depth of 1
+var int global::factor5::helpFactor::deep4::value, frame offset: -2
+symref valueToFactor from scope global::factor5::helpFactor::deep4, depth of 2
+var int global::factor5::helpFactor::tryfactor, frame offset: -2
+var int global::factor5::helpFactor::value, frame offset: -3
+var int global::factor5::valueToFactor, frame offset: -2
+PROGRAM EXECUTION:
+Good parameter to factor1:
+27
+3
+3
+3
+good
+Good parameter to factor1:
+16
+2
+2
+2
+2
+good
+Bad parameter to factor1: 
+-1
+bad
+Bad parameter to factor1: 
+0
+bad
+Bad parameter to factor1: 
+1
+bad
+Good parameter to factor1:
+12
+2
+2
+3
+good
+Good parameter to factor2:
+27
+3
+Good parameter to factor2:
+9
+3
+Good parameter to factor2:
+3
+3
+good
+Good parameter to factor2:
+16
+2
+Good parameter to factor2:
+8
+2
+Good parameter to factor2:
+4
+2
+Good parameter to factor2:
+2
+2
+good
+Bad parameter to factor2: 
+-1
+bad
+Bad parameter to factor2: 
+0
+bad
+Bad parameter to factor2: 
+1
+bad
+Good parameter to factor2:
+12
+2
+Good parameter to factor2:
+6
+2
+Good parameter to factor2:
+3
+3
+good
+Good parameter to factor3:
+27
+3
+Good parameter to factor3:
+9
+3
+Good parameter to factor3:
+3
+3
+good
+Good parameter to factor3:
+16
+2
+Good parameter to factor3:
+8
+2
+Good parameter to factor3:
+4
+2
+Good parameter to factor3:
+2
+2
+good
+Bad parameter to factor3: 
+-1
+bad
+Bad parameter to factor3: 
+0
+bad
+Bad parameter to factor3: 
+1
+bad
+Good parameter to factor3:
+12
+2
+Good parameter to factor3:
+6
+2
+Good parameter to factor3:
+3
+3
+good
+Good parameter to factor4:
+27
+3
+3
+3
+good
+Good parameter to factor4:
+16
+2
+2
+2
+2
+good
+Bad parameter to factor4: 
+-1
+bad
+Bad parameter to factor4: 
+0
+bad
+Bad parameter to factor4: 
+1
+bad
+Good parameter to factor4:
+12
+2
+2
+3
+good
+Good parameter to factor5:
+27
+3
+3
+3
+good
+Good parameter to factor5:
+16
+2
+2
+2
+2
+good
+Bad parameter to factor5: 
+-1
+bad
+Bad parameter to factor5: 
+0
+bad
+Bad parameter to factor5: 
+1
+bad
+Good parameter to factor5:
+12
+2
+2
+3
+good

@@ -1,0 +1,38 @@
+PROGRAMMEMORY
+34
+StepOpCode STEP_CONST
+String This is a simple test, should add 2 and 3 and print 5.
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_CONST
+Long 2
+StepOpCode STEP_CONST
+Long 3
+StepOpCode STEP_LADD
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_CONST
+String This is a simple test, should add 2.5 and 3.25 and print 5.75.
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_CONST
+Double 2.5
+StepOpCode STEP_CONST
+Double 3.25
+StepOpCode STEP_DADD
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_CONST
+String This is a simple test, should concatenate "two " and "three" and print "two three".
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_CONST
+String two 
+StepOpCode STEP_CONST
+String three
+StepOpCode STEP_SADD
+StepOpCode STEP_PRINT
+StepOpCode STEP_CRLF
+StepOpCode STEP_PAUSE
+DATAMEMORY
+0

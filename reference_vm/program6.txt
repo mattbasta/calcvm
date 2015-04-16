@@ -1,0 +1,163 @@
+# program6.txt tests short-circuit order of evaluation in && and ||.
+
+int fbool1 = function(int value) {
+    'Value to fbool1:' ~ value ;
+    return value ;
+}
+
+int fbool2 = function(int value) {
+    'Value to fbool2:' ~ value ;
+    return value ;
+}
+
+int fbool3 = function(int value) {
+    'Value to fbool3:' ~ value ;
+    return value ;
+}
+
+'TEST fbool1(0) && fbool2(0) && fbool3(0)';
+fbool1(0) && fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(0) && fbool3(1)';
+fbool1(0) && fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(0) && fbool2(1) && fbool3(0)';
+fbool1(0) && fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(1) && fbool3(1)';
+fbool1(0) && fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(0) && fbool3(0)';
+fbool1(1) && fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(0) && fbool3(1)';
+fbool1(1) && fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(1) && fbool3(0)';
+fbool1(1) && fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(1) && fbool3(1)';
+fbool1(1) && fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(0) || fbool3(0)';
+fbool1(0) || fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(0) || fbool3(1)';
+fbool1(0) || fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(1) || fbool3(0)';
+fbool1(0) || fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(1) || fbool3(1)';
+fbool1(0) || fbool2(1) || fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(0) || fbool3(0)';
+fbool1(1) || fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(0) || fbool3(1)';
+fbool1(1) || fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(1) || fbool3(0)';
+fbool1(1) || fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(1) || fbool3(1)';
+fbool1(1) || fbool2(1) || fbool3(1) ;
+
+# Now do the same test with all combinations of && and || in addition
+# to all combinations of false and true.
+
+'TEST fbool1(0) && fbool2(0) && fbool3(0)';
+fbool1(0) && fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(0) && fbool3(1)';
+fbool1(0) && fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(0) && fbool2(0) || fbool3(0)';
+fbool1(0) && fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(0) || fbool3(1)';
+fbool1(0) && fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(0) && fbool2(1) && fbool3(0)';
+fbool1(0) && fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(1) && fbool3(1)';
+fbool1(0) && fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(0) && fbool2(1) || fbool3(0)';
+fbool1(0) && fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(0) && fbool2(1) || fbool3(1)';
+fbool1(0) && fbool2(1) || fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(0) && fbool3(0)';
+fbool1(0) || fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(0) && fbool3(1)';
+fbool1(0) || fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(0) || fbool3(0)';
+fbool1(0) || fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(0) || fbool3(1)';
+fbool1(0) || fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(1) && fbool3(0)';
+fbool1(0) || fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(1) && fbool3(1)';
+fbool1(0) || fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(0) || fbool2(1) || fbool3(0)';
+fbool1(0) || fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(0) || fbool2(1) || fbool3(1)';
+fbool1(0) || fbool2(1) || fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(0) && fbool3(0)';
+fbool1(1) && fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(0) && fbool3(1)';
+fbool1(1) && fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(0) || fbool3(0)';
+fbool1(1) && fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(0) || fbool3(1)';
+fbool1(1) && fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(1) && fbool3(0)';
+fbool1(1) && fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(1) && fbool3(1)';
+fbool1(1) && fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(1) && fbool2(1) || fbool3(0)';
+fbool1(1) && fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(1) && fbool2(1) || fbool3(1)';
+fbool1(1) && fbool2(1) || fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(0) && fbool3(0)';
+fbool1(1) || fbool2(0) && fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(0) && fbool3(1)';
+fbool1(1) || fbool2(0) && fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(0) || fbool3(0)';
+fbool1(1) || fbool2(0) || fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(0) || fbool3(1)';
+fbool1(1) || fbool2(0) || fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(1) && fbool3(0)';
+fbool1(1) || fbool2(1) && fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(1) && fbool3(1)';
+fbool1(1) || fbool2(1) && fbool3(1) ;
+
+'TEST fbool1(1) || fbool2(1) || fbool3(0)';
+fbool1(1) || fbool2(1) || fbool3(0) ;
+
+'TEST fbool1(1) || fbool2(1) || fbool3(1)';
+fbool1(1) || fbool2(1) || fbool3(1) ;

@@ -1,0 +1,171 @@
+// testlib.stp -- library of test procs
+// Forth always used "." for printing, so do that here.
+
+proc . printi crlf endproc
+
+proc dumpds		// dump data stack until 0 sentinel is found
+    while
+        dup 0!=
+    do
+        printi " " prints
+    endwhile
+    printi ", stack at " prints ds_depth .
+endproc
+
+proc testmath	// test all the math primitives
+    constant neg1 -1
+    constant pos1 1
+    constant hexa 0xa
+    constant oct8 010
+    decimal
+    "constant -1 as decimal yields " prints neg1 .
+    "constant 1 as decimal yields " prints pos1 .
+    "constant 0xa as decimal yields " prints hexa .
+    "constant 010 as decimal yields " prints oct8 .
+    hex
+    "constant -1 as hex yields " prints neg1 .
+    "constant 1 as hex yields " prints pos1 .
+    "constant 0xa as hex yields " prints hexa .
+    "constant 010 as hex yields " prints oct8 .
+    octal
+    "constant -1 as octal yields " prints neg1 .
+    "constant 1 as octal yields " prints pos1 .
+    "constant 010 as octal yields " prints oct8 .
+    "constant 0xa as octal yields " prints hexa .
+    decimal
+    "20 5 + yields " prints 20 5 + .
+    "20 -5 + yields " prints 20 -5 + .
+    "20 5 - yields " prints 20 5 - .
+    "20 -5 - yields " prints 20 -5 - .
+    "20 5 * yields " prints 20 5 * .
+    "20 -5 * yields " prints 20 -5 * .
+    "20 5 / yields " prints 20 5 / .
+    "20 -5 / yields " prints 20 -5 / .
+    "20 5 % yields " prints 20 5 % .
+    "20 3 % yields " prints 20 3 % .
+    hex
+    "0xffff0000 0xf0f0f0f0 & yields " prints 0xffff0000 0xf0f0f0f0 & .
+    "0xffff0000 0xf0f0f0f0 | yields " prints 0xffff0000 0xf0f0f0f0 | .
+    "0xffff0000 0xf0f0f0f0 ^ yields " prints 0xffff0000 0xf0f0f0f0 ^ .
+    "0xffff0000 3 << yields " prints 0xffff0000 3 << .
+    "0xffff0000 5 >> yields " prints 0xffff0000 5 >> .
+    "0xf0f0f0f0 3 lrot yields " prints 0xf0f0f0f0 3 lrot .
+    "0xf0f0f0f0 3 rrot yields " prints 0xf0f0f0f0 3 rrot .
+    "0xf0f0f0f0 3 lrot16 yields " prints 0xf0f0f0f0 3 lrot16 .
+    "0xf0f0f0f0 3 rrot16 yields " prints 0xf0f0f0f0 3 rrot16 .
+    "0xf0f0f0f0 ~ yields " prints 0xf0f0f0f0 ~ .
+    decimal
+    "20 1 && yields " prints 20 1 && .
+    "20 0 && yields " prints 20 0 && .
+    "20 1 || yields " prints 20 1 || .
+    "20 0 || yields " prints 20 0 || .
+    "20 1 > yields " prints 20 1 > .
+    "20 -11 < yields " prints 20 -11 < .
+    "20 20 == yields " prints 20 20 == .
+    "20 1 >= yields " prints 20 1 >= .
+    "20 -11 <= yields " prints 20 -11 <= .
+    "20 20 >= yields " prints 20 20 >= .
+    "20 20 <= yields " prints 20 20 <= .
+    "20 20 != yields " prints 20 20 != .
+    "20 21 != yields " prints 20 21 != .
+    "100 minus yields " prints 100 minus .
+    "-100 minus yields " prints -100 minus .
+    "100 sign yields " prints 100 sign .
+    "-100 sign yields " prints -100 sign .
+    "0 sign yields " prints 0 sign .
+    "100 abs yields " prints 100 abs .
+    "-100 abs yields " prints -100 abs .
+    "0 abs yields " prints 0 abs .
+    "1 0== yields " prints 1 0== .
+    "0 0== yields " prints 0 0== .
+    "-1 0== yields " prints -1 0== .
+    "1 0!= yields " prints 1 0!= .
+    "0 0!= yields " prints 0 0!= .
+    "-1 0!= yields " prints -1 0!= .
+    "1 0< yields " prints 1 0< .
+    "0 0< yields " prints 0 0< .
+    "-1 0< yields " prints -1 0< .
+    "1 0> yields " prints 1 0> .
+    "0 0> yields " prints 0 0> .
+    "-1 0> yields " prints -1 0> .
+    "1 0>= yields " prints 1 0>= .
+    "0 0>= yields " prints 0 0>= .
+    "-1 0>= yields " prints -1 0>= .
+    "1 0<= yields " prints 1 0<= .
+    "0 0<= yields " prints 0 0<= .
+    "-1 0<= yields " prints -1 0<= .
+    "-1 1+ yields " prints -1 1+ .
+    "-1 1- yields " prints -1 1- .
+    "-1 2+ yields " prints -1 2+ .
+    "-1 2- yields " prints -1 2- .
+    "-1 2* yields " prints -1 2* .
+    "-1 2/ yields " prints -1 2/ .
+    "9 1<< yields " prints 9 1<< .
+    "9 1>> yields " prints 9 1>> .
+    "sizeof_word is " prints sizeof_word .
+    "ds_depth is " prints ds_depth .
+    "ts_depth is " prints ts_depth .
+    "code_dict_len is " prints code_dict_len .
+    "data_dict_len is " prints data_dict_len .
+    "0 10 dup yields " prints 0 10 dup dumpds
+    "0 10 dup2 yields " prints 0 10 dup2 dumpds
+    "0 10 20 30 40 50 2 dupi yields " prints 0 10 20 30 40 50 2 dupi dumpds
+    "0 10 20 swap yields " prints 0 10 20 swap dumpds
+    "0 10 20 30 over yields " prints 0 10 20 30 over dumpds
+    "0 10 20 30 over2 yields " prints 0 10 20 30 over2 dumpds
+    // pause
+    "0 10 20 30 drop yields " prints 0 10 20 30 drop dumpds
+    "0 10 20 30 drop2 yields " prints 0 10 20 30 drop2 dumpds
+endproc
+
+proc s_proc0
+    "inside s_proc0 on index " prints dup printi crlf
+endproc
+
+proc s_proc1
+    "inside s_proc1 on index " prints dup printi crlf
+endproc
+
+proc s_proc2
+    "inside s_proc2 on index " prints dup printi crlf
+endproc
+
+proc s_proc3
+    "inside s_proc3 on index " prints dup printi crlf
+endproc
+
+proc testswitch
+    -1
+    while
+        dup 7 <
+    do
+        switch
+            dup
+        case
+            s_proc0
+            s_proc1
+            s_proc2
+            s_proc3
+        endcase
+        1+
+    endwhile
+    drop
+    // following tests test @proc and @call, they put dummy 90
+    // through 93 values on stack to satisfy proc0 through proc3
+    // "ds_depth before @proc is " prints ds_depth .
+    // UNIMPLEMENTED 93 @proc s_proc3
+    // UNIMPLEMENTED 92 @proc s_proc2
+    // UNIMPLEMENTED 91 @proc s_proc1
+    // UNIMPLEMENTED 90 @proc s_proc0
+    // UNIMPLEMENTED @call drop
+    // UNIMPLEMENTED @call drop
+    // UNIMPLEMENTED @call drop
+    // UNIMPLEMENTED @call drop
+    // "ds_depth after @proc is " prints ds_depth .
+endproc
+
+proc main
+    testmath
+    testswitch
+    0
+endproc

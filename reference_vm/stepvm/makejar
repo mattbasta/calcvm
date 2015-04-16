@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Usage: makejar
+
+PACKAGE=newvm3
+SUBPACKAGE=stepvm
+
+CLASSFILELIST1=`find newvm3 \( -name "*.class" \) -print`
+CLASSFILELIST2=`find net \( -name "*.class" \) -print`
+jar vcfm $PACKAGE/$SUBPACKAGE/$SUBPACKAGE.jar $PACKAGE/$SUBPACKAGE/manifest.txt $CLASSFILELIST1 $CLASSFILELIST2

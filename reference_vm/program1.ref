@@ -1,0 +1,91 @@
+(   ('varassign', 'a', ('typedecl', 'int'), ('constant', 'int', '2')),
+    (   'varassign',
+        'b',
+        ('typedecl', 'int'),
+        ('+', 'int', ('constant', 'int', '3'), ('id', 'int', 'a'))),
+    (   'funcassign',
+        'f',
+        ('typedecl', 'int'),
+        (('b', ('typedecl', 'int')), ('c', ('typedecl', 'float'))),
+        (   (   'printexpression',
+                ('~', 'float', (('id', 'int', 'b'), ('id', 'float', 'c')))),
+            (   'varassign',
+                'x',
+                ('typedecl', 'int'),
+                ('*', 'int', ('constant', 'int', '5'), ('id', 'int', 'b'))),
+            (   'funcassign',
+                'innerf',
+                ('typedecl', 'int'),
+                (   ('count', ('typedecl', 'int')),
+                    ('text', ('typedecl', 'string'))),
+                (   (   'varassign',
+                        'x',
+                        ('typedecl', 'int'),
+                        (   '%',
+                            'int',
+                            ('id', 'int', 'a'),
+                            ('constant', 'int', '2'))),
+                    ('printexpression', ('id', 'string', 'text'))),
+                ('return', ('id', 'int', 'a')))),
+        (   'return',
+            (   '?:',
+                'int',
+                ('>', 'int', ('id', 'int', 'x'), ('constant', 'int', '7')),
+                ('+', 'int', ('id', 'int', 'x'), ('constant', 'int', '3')),
+                (   'funcall',
+                    'int',
+                    'innerf',
+                    (   ('constant', 'int', '3'),
+                        ('constant', 'string', 'stringarg')))))),
+    (   'printexpression',
+        ('funcall', 'int', 'f', (('id', 'int', 'a'), ('id', 'int', 'b')))),
+    ('printexpression', ('constant', 'int', '3')),
+    ('varassign', 'f1', ('typedecl', 'float'), ('constant', 'int', '3')),
+    ('printexpression', ('id', 'float', 'f1')),
+    (   'varassign',
+        'f2',
+        ('typedecl', 'float'),
+        (   'funcall',
+            'int',
+            'f',
+            (('id', 'float', 'f1'), ('constant', 'int', '3')))),
+    (   'varassign',
+        's',
+        ('typedecl', 'string'),
+        ('constant', 'string', 'my string')),
+    ('printexpression', ('id', 'string', 's')))
+counter #depth : 0
+counter #funcs : 1
+counter #locals : 5
+counter #params : 0
+var int global::a, frame offset: 0
+var int global::b, frame offset: 1
+function int global::f
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 1
+counter #params : 2
+var int global::f::b, frame offset: -3
+var float global::f::c, frame offset: -2
+function int global::f::innerf
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 1
+counter #params : 2
+symref a from scope global::f::innerf, depth of 2
+var int global::f::innerf::count, frame offset: -3
+var string global::f::innerf::text, frame offset: -2
+var int global::f::innerf::x, frame offset: 0
+var int global::f::x, frame offset: 0
+var float global::f1, frame offset: 2
+var float global::f2, frame offset: 3
+var string global::s, frame offset: 4
+PROGRAM EXECUTION:
+2
+5.0
+13
+3
+3.0
+3
+3.0
+my string

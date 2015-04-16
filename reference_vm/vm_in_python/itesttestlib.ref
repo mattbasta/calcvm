@@ -1,0 +1,101 @@
+constant -1 as decimal yields -1
+constant 1 as decimal yields 1
+constant 0xa as decimal yields 10
+constant 010 as decimal yields 8
+constant -1 as hex yields 0xffffffff
+constant 1 as hex yields 0x1
+constant 0xa as hex yields 0xa
+constant 010 as hex yields 0x8
+constant -1 as octal yields 037777777777
+constant 1 as octal yields 01
+constant 010 as octal yields 010
+constant 0xa as octal yields 012
+20 5 + yields 25
+20 -5 + yields 15
+20 5 - yields 15
+20 -5 - yields 25
+20 5 * yields 100
+20 -5 * yields -100
+20 5 / yields 4
+20 -5 / yields -4
+20 5 % yields 0
+20 3 % yields 2
+0xffff0000 0xf0f0f0f0 & yields 0xf0f00000
+0xffff0000 0xf0f0f0f0 | yields 0xfffff0f0
+0xffff0000 0xf0f0f0f0 ^ yields 0xf0ff0f0
+0xffff0000 3 << yields 0xfff80000
+0xffff0000 5 >> yields 0x7fff800
+0xf0f0f0f0 3 lrot yields 0x87878787
+0xf0f0f0f0 3 rrot yields 0x1e1e1e1e
+0xf0f0f0f0 3 lrot16 yields 0x8787
+0xf0f0f0f0 3 rrot16 yields 0x1e1e
+0xf0f0f0f0 ~ yields 0xf0f0f0f
+20 1 && yields 1
+20 0 && yields 0
+20 1 || yields 1
+20 0 || yields 1
+20 1 > yields 1
+20 -11 < yields 0
+20 20 == yields 1
+20 1 >= yields 1
+20 -11 <= yields 0
+20 20 >= yields 1
+20 20 <= yields 1
+20 20 != yields 0
+20 21 != yields 1
+100 minus yields -100
+-100 minus yields 100
+100 sign yields 0
+-100 sign yields 1
+0 sign yields 0
+100 abs yields 100
+-100 abs yields 100
+0 abs yields 0
+1 0== yields 0
+0 0== yields 1
+-1 0== yields 0
+1 0!= yields 1
+0 0!= yields 0
+-1 0!= yields 1
+1 0< yields 0
+0 0< yields 0
+-1 0< yields 1
+1 0> yields 1
+0 0> yields 0
+-1 0> yields 0
+1 0>= yields 1
+0 0>= yields 1
+-1 0>= yields 0
+1 0<= yields 0
+0 0<= yields 1
+-1 0<= yields 1
+-1 1+ yields 0
+-1 1- yields -2
+-1 2+ yields 1
+-1 2- yields -3
+-1 2* yields -2
+-1 2/ yields -1
+9 1<< yields 18
+9 1>> yields 4
+sizeof_word is 1
+ds_depth is 1
+ts_depth is 4
+code_dict_len is 568
+data_dict_len is 98
+0 10 dup yields 10 10 0, stack at 1
+0 10 dup2 yields 10 10 10 0, stack at 1
+0 10 20 30 40 50 2 dupi yields 30 50 40 30 20 10 0, stack at 1
+0 10 20 swap yields 10 20 0, stack at 1
+0 10 20 30 over yields 20 30 20 10 0, stack at 1
+0 10 20 30 over2 yields 10 30 20 10 0, stack at 1
+0 10 20 30 drop yields 20 10 0, stack at 1
+0 10 20 30 drop2 yields 10 0, stack at 1
+inside s_proc3 on index -1
+inside s_proc0 on index 0
+inside s_proc1 on index 1
+inside s_proc2 on index 2
+inside s_proc3 on index 3
+inside s_proc3 on index 4
+inside s_proc3 on index 5
+inside s_proc3 on index 6
+VM halted with exit code 0

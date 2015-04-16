@@ -1,0 +1,311 @@
+ERROR, Type mismatch for return from function innerf near line 11
+ERROR, Function call to innerf near line 11 has incorrect number of arguments.
+ERROR, Result type mismatch at '?:' near line 11
+ERROR, Undefined variable name f5 used near line 17
+ERROR, Variable name f1 near line 17 conflicts with variable of same name in current scope.
+ERROR, Function call to f near line 18 has incorrect type for argument for parameter b
+ERROR, Type mismatch across '=' near line 18
+ERROR, Variable name a near line 26 conflicts with outer variable or function of same name already used in this scope.
+ERROR, Type mismatch across '=' near line 28
+ERROR, Variable name y near line 29 conflicts with variable of same name in current scope.
+ERROR, Function name a near line 30 conflicts with outer variable or function of same name already used in this scope.
+ERROR, Variable name x near line 33 conflicts with variable of same name in current scope.
+ERROR, Variable name y near line 34 conflicts with variable of same name in current scope.
+ERROR, Type mismatch across '=' near line 34
+ERROR, Type mismatch across '=' near line 36
+ERROR, Undefined variable name q used near line 37
+ERROR, Function call to sfunction near line 39 has incorrect number of arguments.
+ERROR, Function call to sfunction near line 39 has incorrect type for argument for parameter x
+ERROR, Function call to sfunction near line 40 has incorrect type for argument for parameter x
+ERROR, Function call to sfunction near line 40 has incorrect type for argument for parameter z
+ERROR, Variable name zzzz near line 41 conflicts with variable of same name in current scope.
+ERROR, Type mismatch across '=' near line 41
+ERROR, Function name aa near line 42 conflicts with variable of same name in current scope.
+ERROR, Variable name a near line 45 conflicts with outer variable or function of same name already used in this scope.
+ERROR, Type mismatch across operator * near line 46
+ERROR, Variable name a near line 46 conflicts with outer variable or function of same name already used in this scope.
+ERROR, Non-numeric type at unary '-' near line 47
+ERROR, Non-int type at unary '!' near line 48
+ERROR, Undefined variable name aaaaaa used near line 50
+ERROR, Type mismatch for return from function sfunction near line 56
+ERROR, Variable name f near line 56 conflicts with function of same name in current scope.
+ERROR, Non-function name a used as a function near line 57
+ERROR, Non-variable name f used as a variable near line 58
+ERROR, Function name f near line 59 conflicts with function of same name in current scope.
+ERROR, Non-int condition at '?:' near line 62
+ERROR, Type mismatch across operator && near line 63
+ERROR, Type mismatch across operator || near line 64
+ERROR, Type mismatch across operator + near line 66
+ERROR, Type mismatch across operator + near line 67
+ERROR, Type mismatch across operator + near line 70
+ERROR, cannot print array near line 72
+DEBUGGING DUMP OF PARSE TREE:
+(   ('varassign', 'a', ('typedecl', 'int'), ('constant', 'int', '2')),
+    (   'varassign',
+        'b',
+        ('typedecl', 'int'),
+        ('+', 'int', ('constant', 'int', '3'), ('id', 'int', 'a'))),
+    (   'funcassign',
+        'f',
+        ('typedecl', 'int'),
+        (('b', ('typedecl', 'int')), ('c', ('typedecl', 'int'))),
+        (   (   'varassign',
+                'x',
+                ('typedecl', 'int'),
+                ('*', 'int', ('constant', 'int', '5'), ('id', 'int', 'b'))),
+            (   'funcassign',
+                'innerf',
+                ('typedecl', 'string'),
+                (   ('count', ('typedecl', 'int')),
+                    ('text', ('typedecl', 'string'))),
+                (   (   'varassign',
+                        'x',
+                        ('typedecl', 'int'),
+                        (   '%',
+                            'int',
+                            ('id', 'int', 'a'),
+                            ('constant', 'int', '2'))),),
+                ('return', ('id', 'int', 'a')))),
+        (   'return',
+            (   '?:',
+                None,
+                ('>', 'int', ('id', 'int', 'x'), ('constant', 'int', '7')),
+                ('+', 'int', ('id', 'int', 'x'), ('constant', 'int', '3')),
+                (   'funcall',
+                    'string',
+                    'innerf',
+                    (('constant', 'int', '3'),))))),
+    (   'printexpression',
+        ('funcall', 'int', 'f', (('id', 'int', 'a'), ('id', 'int', 'b')))),
+    ('printexpression', ('constant', 'int', '3')),
+    ('varassign', 'f1', ('typedecl', 'float'), ('constant', 'int', '3')),
+    ('printexpression', ('id', 'float', 'f1')),
+    (   'varassign',
+        'f1',
+        ('typedecl', 'float'),
+        (   'funcall',
+            'int',
+            'f',
+            (('id', None, 'f5'), ('constant', 'float', '3.7')))),
+    (   'varassign',
+        'f3',
+        ('typedecl', 'string'),
+        (   'funcall',
+            'int',
+            'f',
+            (('constant', 'string', 'fred'), ('constant', 'float', '3.7')))),
+    (   'varassign',
+        's',
+        ('typedecl', 'string'),
+        ('constant', 'string', 'my string')),
+    ('printexpression', ('id', 'string', 's')),
+    (   'funcassign',
+        'sfunction',
+        ('typedecl', 'string'),
+        (   ('x', ('typedecl', 'int')),
+            ('y', ('typedecl', 'float')),
+            ('z', ('typedecl', 'string'))),
+        (   ('varassign', 'aa', ('typedecl', 'int'), ('id', 'int', 'a')),
+            ('varassign', 'a', ('typedecl', 'int'), ('id', 'int', 'aa')),
+            ('varassign', 'f1', ('typedecl', 'float'), ('id', 'int', 'aa')),
+            (   'varassign',
+                'f2',
+                ('typedecl', 'float'),
+                ('id', 'string', 'f3')),
+            ('varassign', 'y', ('typedecl', 'float'), ('id', 'int', 'b')),
+            (   'funcassign',
+                'a',
+                ('typedecl', 'int'),
+                (),
+                (),
+                ('return', ('constant', 'float', '2.3'))),
+            ('varassign', 'x', ('typedecl', 'float'), ('id', 'int', 'x')),
+            ('varassign', 'y', ('typedecl', 'float'), ('id', 'string', 'z')),
+            (   'varassign',
+                'sz',
+                ('typedecl', 'string'),
+                ('id', 'string', 'z')),
+            ('varassign', 'szz', ('typedecl', 'string'), ('id', 'int', 'x')),
+            ('printexpression', ('id', None, 'q')),
+            (   'varassign',
+                'zzzz',
+                ('typedecl', 'string'),
+                (   'funcall',
+                    'string',
+                    'sfunction',
+                    (   ('constant', 'float', '2.1'),
+                        ('constant', 'int', '1'),
+                        ('constant', 'string', 'this should be ok')))),
+            (   'varassign',
+                'zzzzz',
+                ('typedecl', 'string'),
+                (   'funcall',
+                    'string',
+                    'sfunction',
+                    (('constant', 'string', 'this should not'),))),
+            (   'varassign',
+                'zzzzzz',
+                ('typedecl', 'string'),
+                (   'funcall',
+                    'string',
+                    'sfunction',
+                    (   ('constant', 'string', 'nor should this'),
+                        ('constant', 'int', '3'),
+                        ('id', 'int', 'aa')))),
+            (   'varassign',
+                'zzzz',
+                ('typedecl', 'string'),
+                (   '+',
+                    'float',
+                    (   '*',
+                        'int',
+                        ('constant', 'int', '5'),
+                        ('constant', 'int', '3')),
+                    (   '*',
+                        'float',
+                        ('constant', 'int', '2'),
+                        ('id', 'float', 'f1')))),
+            (   'funcassign',
+                'aa',
+                ('typedecl', 'int'),
+                (),
+                (),
+                ('return', ('constant', 'int', '5'))),
+            (   'varassign',
+                'a',
+                ('typedecl', 'int'),
+                ('constant', 'int', '5')),
+            (   'varassign',
+                'a',
+                ('typedecl', 'int'),
+                (   '+',
+                    None,
+                    (   '+',
+                        None,
+                        ('constant', 'int', '3'),
+                        (   '*',
+                            None,
+                            ('constant', 'float', '4.3'),
+                            ('constant', 'string', 'oops'))),
+                    ('id', 'int', 'a'))),
+            (   'printexpression',
+                ('uminus', None, ('constant', 'string', 'fish'))),
+            (   'printexpression',
+                ('unot', None, ('constant', 'float', '8.3'))),
+            ('printexpression', ('unot', 'int', ('id', 'int', 'aa'))),
+            ('printexpression', ('unot', None, ('id', None, 'aaaaaa'))),
+            ('printexpression', ('unot', 'int', ('id', 'int', 'x'))),
+            (   'printexpression',
+                ('%', 'int', ('id', 'int', 'x'), ('id', 'int', 'x'))),
+            (   'printexpression',
+                (   '?:',
+                    'int',
+                    ('id', 'int', 'x'),
+                    ('constant', 'int', '1'),
+                    ('id', 'int', 'b')))),
+        ('return', ('constant', 'float', '3.2'))),
+    ('varassign', 'f', ('typedecl', 'int'), ('constant', 'float', '3.2')),
+    ('printexpression', ('funcall', None, 'a', (('constant', 'int', '3'),))),
+    (   'varassign',
+        'aaaaaaaaa',
+        ('typedecl', 'int'),
+        ('*', None, ('id', None, 'f'), ('constant', 'int', '2'))),
+    (   'funcassign',
+        'f',
+        ('typedecl', 'int'),
+        (),
+        (),
+        ('return', ('constant', 'float', '5.4'))),
+    (   'printexpression',
+        (   '?:',
+            None,
+            (   '+',
+                'float',
+                ('constant', 'int', '3'),
+                ('constant', 'float', '7.4')),
+            ('constant', 'int', '1'),
+            ('constant', 'int', '0'))),
+    (   'printexpression',
+        (   '||',
+            None,
+            (   ('id', 'int', 'a'),
+                ('&&', None, (('id', 'int', 'b'), ('id', 'float', 'f1')))))),
+    (   'printexpression',
+        (   '||',
+            None,
+            (   ('&&', 'int', (('id', 'int', 'a'), ('id', 'int', 'b'))),
+                ('id', 'float', 'f1')))),
+    (   'printexpression',
+        ('+', None, ('constant', 'int', '1'), ('constant', 'string', 'a'))),
+    (   'printexpression',
+        ('+', None, ('constant', 'string', 'b'), ('constant', 'int', '2'))),
+    (   'varassign',
+        'iarray',
+        ('typedecl', 'int[]'),
+        (   'arrayvalues',
+            'int[]',
+            (   ('constant', 'int', '1'),
+                ('constant', 'int', '2'),
+                ('constant', 'int', '3')))),
+    (   'varassign',
+        'sarray',
+        ('typedecl', 'string[]'),
+        (   'arrayvalues',
+            'string[]',
+            (   ('constant', 'string', 'a'),
+                ('constant', 'string', 'b'),
+                ('constant', 'string', 'c')))),
+    (   'printexpression',
+        ('+', None, ('id', 'int[]', 'iarray'), ('id', 'string[]', 'sarray'))),
+    (   'printexpression',
+        ('+', 'int[]', ('id', 'int[]', 'iarray'), ('id', 'int[]', 'iarray'))))
+DEBUGGING DUMP OF SYMBOL TABLE:
+counter #depth : 0
+counter #funcs : 3
+counter #locals : 10
+counter #params : 0
+var int global::a, frame offset: 0
+var int global::aaaaaaaaa, frame offset: 7
+var int global::b, frame offset: 1
+function int global::f
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 1
+counter #params : 2
+var int global::f::b, frame offset: -3
+var int global::f::c, frame offset: -2
+function string global::f::innerf
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 1
+counter #params : 2
+symref a from scope global::f::innerf, depth of 2
+var int global::f::innerf::count, frame offset: -3
+var string global::f::innerf::text, frame offset: -2
+var int global::f::innerf::x, frame offset: 0
+var int global::f::x, frame offset: 0
+var float global::f1, frame offset: 2
+var string global::f3, frame offset: 4
+var int[] global::iarray, frame offset: 8
+var string global::s, frame offset: 5
+var string[] global::sarray, frame offset: 9
+function string global::sfunction
+counter #depth : 1
+counter #funcs : 2
+counter #locals : 15
+counter #params : 3
+symref a from scope global::sfunction, depth of 1
+var int global::sfunction::aa, frame offset: 0
+symref b from scope global::sfunction, depth of 1
+var float global::sfunction::f1, frame offset: 2
+var float global::sfunction::f2, frame offset: 3
+symref f3 from scope global::sfunction, depth of 1
+symref sfunction from scope global::sfunction, depth of 1
+var string global::sfunction::sz, frame offset: 7
+var string global::sfunction::szz, frame offset: 8
+var int global::sfunction::x, frame offset: -4
+var float global::sfunction::y, frame offset: -3
+var string global::sfunction::z, frame offset: -2
+var string global::sfunction::zzzz, frame offset: 9
+var string global::sfunction::zzzzz, frame offset: 10
+var string global::sfunction::zzzzzz, frame offset: 11

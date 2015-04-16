@@ -1,0 +1,292 @@
+(   (   'funcassign',
+        'printiarray',
+        ('typedecl', 'string'),
+        (   ('prefix', ('typedecl', 'string')),
+            ('iarray', ('typedecl', 'int[]')),
+            ('i', ('typedecl', 'int'))),
+        (),
+        (   'return',
+            (   '?:',
+                'string',
+                (   '&&',
+                    'int',
+                    (   (   '>',
+                            'int',
+                            ('id', 'int', 'i'),
+                            ('uminus', 'int', ('constant', 'int', '1'))),
+                        (   '<',
+                            'int',
+                            ('id', 'int', 'i'),
+                            ('arraylen', 'int', 'iarray', 'int[]')))),
+                (   'funcall',
+                    'string',
+                    'printiarray',
+                    (   (   '+',
+                            'string',
+                            (   '+',
+                                'string',
+                                ('id', 'string', 'prefix'),
+                                ('constant', 'string', ' ')),
+                            (   'typecast',
+                                'string',
+                                (   'id',
+                                    'int',
+                                    'iarray',
+                                    ('id', 'int', 'i')))),
+                        ('id', 'int[]', 'iarray'),
+                        (   '+',
+                            'int',
+                            ('id', 'int', 'i'),
+                            ('constant', 'int', '1')))),
+                ('id', 'string', 'prefix')))),
+    (   'funcassign',
+        'factor1',
+        ('typedecl', 'int[]'),
+        (('valueToFactor', ('typedecl', 'int')),),
+        (   (   'funcassign',
+                'helpFactor',
+                ('typedecl', 'int[]'),
+                (   ('value', ('typedecl', 'int')),
+                    ('tryfactor', ('typedecl', 'int')),
+                    ('factors', ('typedecl', 'int[]'))),
+                (),
+                (   'return',
+                    (   '?:',
+                        'int[]',
+                        (   '<',
+                            'int',
+                            ('id', 'int', 'tryfactor'),
+                            ('id', 'int', 'value')),
+                        (   '?:',
+                            'int[]',
+                            (   '==',
+                                'int',
+                                (   '%',
+                                    'int',
+                                    ('id', 'int', 'value'),
+                                    ('id', 'int', 'tryfactor')),
+                                ('constant', 'int', '0')),
+                            (   'funcall',
+                                'int[]',
+                                'helpFactor',
+                                (   (   '/',
+                                        'int',
+                                        ('id', 'int', 'value'),
+                                        ('id', 'int', 'tryfactor')),
+                                    ('constant', 'int', '2'),
+                                    (   '+',
+                                        'int[]',
+                                        ('id', 'int[]', 'factors'),
+                                        (   'arrayvalues',
+                                            'int[]',
+                                            (   (   'id',
+                                                    'int',
+                                                    'tryfactor'),))))),
+                            (   'funcall',
+                                'int[]',
+                                'helpFactor',
+                                (   ('id', 'int', 'value'),
+                                    (   '?:',
+                                        'int',
+                                        (   '==',
+                                            'int',
+                                            (   'id',
+                                                'int',
+                                                'tryfactor'),
+                                            ('constant', 'int', '2')),
+                                        ('constant', 'int', '3'),
+                                        (   '+',
+                                            'int',
+                                            (   'id',
+                                                'int',
+                                                'tryfactor'),
+                                            ('constant', 'int', '2'))),
+                                    ('id', 'int[]', 'factors')))),
+                        (   '+',
+                            'int[]',
+                            ('id', 'int[]', 'factors'),
+                            (   'arrayvalues',
+                                'int[]',
+                                (('id', 'int', 'value'),)))))),),
+        (   'return',
+            (   '?:',
+                'int[]',
+                (   '>',
+                    'int',
+                    ('id', 'int', 'valueToFactor'),
+                    ('constant', 'int', '1')),
+                (   '~',
+                    'int[]',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Good parameter to factor1:'),
+                                ('id', 'int', 'valueToFactor'))),
+                        (   'funcall',
+                            'int[]',
+                            'helpFactor',
+                            (   ('id', 'int', 'valueToFactor'),
+                                ('constant', 'int', '2'),
+                                ('arrayvalues', 'any[]', ()))))),
+                (   '~',
+                    'any[]',
+                    (   (   '~',
+                            'int',
+                            (   (   'constant',
+                                    'string',
+                                    'Bad parameter to factor1: '),
+                                ('id', 'int', 'valueToFactor'))),
+                        ('arrayvalues', 'any[]', ())))))),
+    (   'varassign',
+        'foo27',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '27'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F27: '),
+                ('id', 'int[]', 'foo27'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo16',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '16'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F16: '),
+                ('id', 'int[]', 'foo16'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo_1',
+        ('typedecl', 'int[]'),
+        (   'funcall',
+            'int[]',
+            'factor1',
+            (('uminus', 'int', ('constant', 'int', '1')),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F-1: '),
+                ('id', 'int[]', 'foo_1'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo0',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '0'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F0: '),
+                ('id', 'int[]', 'foo0'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo1',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '1'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F1: '),
+                ('id', 'int[]', 'foo1'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo12',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '12'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F12: '),
+                ('id', 'int[]', 'foo12'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'foo1123456789',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '123456789'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'F123456789: '),
+                ('id', 'int[]', 'foo1123456789'),
+                ('constant', 'int', '0')))),
+    (   'varassign',
+        'twoTo30',
+        ('typedecl', 'int[]'),
+        ('funcall', 'int[]', 'factor1', (('constant', 'int', '1073741824'),))),
+    (   'printexpression',
+        (   'funcall',
+            'string',
+            'printiarray',
+            (   ('constant', 'string', 'twoTo30: '),
+                ('id', 'int[]', 'twoTo30'),
+                ('constant', 'int', '0')))))
+counter #depth : 0
+counter #funcs : 2
+counter #locals : 8
+counter #params : 0
+function int[] global::factor1
+counter #depth : 1
+counter #funcs : 1
+counter #locals : 0
+counter #params : 1
+function int[] global::factor1::helpFactor
+counter #depth : 2
+counter #funcs : 0
+counter #locals : 0
+counter #params : 3
+var int[] global::factor1::helpFactor::factors, frame offset: -2
+symref helpFactor from scope global::factor1::helpFactor, depth of 1
+var int global::factor1::helpFactor::tryfactor, frame offset: -3
+var int global::factor1::helpFactor::value, frame offset: -4
+var int global::factor1::valueToFactor, frame offset: -2
+var int[] global::foo0, frame offset: 3
+var int[] global::foo1, frame offset: 4
+var int[] global::foo1123456789, frame offset: 6
+var int[] global::foo12, frame offset: 5
+var int[] global::foo16, frame offset: 1
+var int[] global::foo27, frame offset: 0
+var int[] global::foo_1, frame offset: 2
+function string global::printiarray
+counter #depth : 1
+counter #funcs : 0
+counter #locals : 0
+counter #params : 3
+var int global::printiarray::i, frame offset: -2
+var int[] global::printiarray::iarray, frame offset: -3
+var string global::printiarray::prefix, frame offset: -4
+symref printiarray from scope global::printiarray, depth of 1
+var int[] global::twoTo30, frame offset: 7
+PROGRAM EXECUTION:
+Good parameter to factor1:
+27
+F27:  3 3 3
+Good parameter to factor1:
+16
+F16:  2 2 2 2
+Bad parameter to factor1: 
+-1
+F-1: 
+Bad parameter to factor1: 
+0
+F0: 
+Bad parameter to factor1: 
+1
+F1: 
+Good parameter to factor1:
+12
+F12:  2 2 3
+Good parameter to factor1:
+123456789
+F123456789:  3 3 3607 3803
+Good parameter to factor1:
+1073741824
+twoTo30:  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
