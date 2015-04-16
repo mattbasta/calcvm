@@ -15,7 +15,7 @@ test: build
 	time ./main.out
 
 main.out:
-	g++ main.cpp -O2 -o main.out -lpthread
+	g++ main.cpp -o main.out -lpthread
 
 clean:
 	rm -rf *.gch

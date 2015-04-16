@@ -5,4 +5,4 @@ test: clean
 	python reference_vm/test_parser.py reference_vm/program6.txt buildbox/bytecode.vmlf
 	./generate.py buildbox/bytecode.vmlf
 	cp raw/* buildbox/
-	cd buildbox && chmod 777&& make build && ./main.out
+	cd buildbox && make build && ./main.out

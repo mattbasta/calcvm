@@ -181,7 +181,6 @@ HeapObj::HeapObj(unsigned int size, int refcnt) {
     cast_type = ALL;
     orig_size = size;
     refcount = refcnt;
-    incats = NULL;
     concats = NULL;
     ccount = 0;
     do_destroy = true;
@@ -194,7 +193,6 @@ HeapObj::HeapObj(unsigned int offset, DataObject ** vm) {
     cast_type = ALL;
     orig_size = size;
     refcount = 0;
-    incats = NULL;
     concats = NULL;
     ccount = 0;
     do_destroy = false;
@@ -214,7 +212,6 @@ HeapObj::HeapObj(const HeapObj& copy) {
     cast_type = copy.cast_type;
     orig_size = copy.orig_size;
     refcount = 1;
-    incats = NULL;
     concats = NULL;
     ccount = 0;
     do_destroy = true;
@@ -244,7 +241,6 @@ HeapObj::HeapObj(HeapObj * copy) {
     cast_type = copy->cast_type;
     orig_size = copy->orig_size;
     refcount = 1;
-    incats = NULL;
     concats = NULL;
     ccount = 0;
     do_destroy = true;
@@ -276,8 +272,6 @@ HeapObj::HeapObj(DataObject ** data, unsigned int size) {
 long HeapObj::get_size() {
     //DEBUG//if(destructed) throw 5000;
     unsigned int output = orig_size;
-    if(incats != NULL)
-        output += incats->size();
     if(concats != NULL) {
         for(int i = 0; i < ccount; ++i)
             output += (*concats)[i]->orig_size;
@@ -288,15 +282,6 @@ long HeapObj::get_size() {
 void HeapObj::dereference() {
     //debug//if(destructed) throw 5000;
     if(--refcount < 1) {
-        // Clear the incats
-        if(incats != NULL) {
-            unsigned int ics = incats->size();
-            for(unsigned int i = 0; i < ics; ics++)
-                delete (*incats)[i];
-            delete incats;
-            incats = NULL;
-        }
-
         // Drop the concatted arrays' refcounts.
         if(concats != NULL) {
             for(unsigned int i = 0; i < ccount; ++i)
@@ -328,9 +313,6 @@ void HeapObj::safe_dereference() {
             }
             delete concats;
         }
-
-        if(incats != NULL)
-            delete incats;
 
         delete[] array;
         delete this;
@@ -365,7 +347,7 @@ inline void HeapObj::set(unsigned int offset, DataObject * value) {
 
 void HeapObj::flatten() {
     //DEBUG//if(destructed) throw 5000;
-    if(concats == NULL && incats == NULL)
+    if(concats == NULL)
         return;
 
     unsigned int new_capacity = get_rounded_size(get_size());
@@ -380,73 +362,49 @@ void HeapObj::flatten() {
         new_array = array;
 
     unsigned int counter = orig_size;
-
-    if(incats != NULL) {
-        std::copy(incats->begin(), incats->end(), new_array + counter);
-        counter += incats->size();
-        delete incats;
-        incats = NULL;
-    }
-
-    if(ccount) {
-        for(unsigned int ci = 0; ci < ccount; ++ci) {
-            HeapObj * tail = (*concats)[ci];
-            if(tail->refcount > 1) {
-                // If the refcount is 1, it's going to be destroyed either way.
-                // Recycle the data objects if we can and do a safe dereference.
-                // Otherwise, we don't need to dereference, we just need to
-                // decrement the reference count.
-                for(unsigned int i = 0; i < tail->orig_size; ++i) {
-                    new_array[counter] = new DataObject(*tail->array[i]);
-                    counter++;
-                }
-                if(tail->incats != NULL) {
-                    unsigned int ics = tail->incats->size();
-                    for(unsigned int ici = 0; ici < ics; ++ici) {
-                        new_array[counter] = new DataObject(*(*tail->incats)[ici]);
-                        counter++;
-                    }
-                }
-                tail->refcount -= 1;
-                // The above line does this.
-                //tail->dereference();
-            } else {
-                // Copy in the data objects.
-                std::copy(tail->array, tail->array + tail->orig_size,
-                          new_array + counter);
-                // Update the counter.
-                counter += tail->orig_size;
-                if(tail->incats != NULL) {
-                    std::copy(tail->incats->begin(), tail->incats->end(),
-                              new_array + counter);
-                    counter += tail->incats->size();
-                    delete tail->incats;
-                    tail->incats = NULL;
-                }
-                // Kill the object softly with our song, kill it softly
-                tail->safe_dereference();
+    for(unsigned int ci = 0; ci < ccount; ++ci) {
+        HeapObj * tail = (*concats)[ci];
+        if(tail->refcount > 1) {
+            // If the refcount is 1, it's going to be destroyed either way.
+            // Recycle the data objects if we can and do a safe dereference.
+            // Otherwise, we don't need to dereference, we just need to
+            // decrement the reference count.
+            for(unsigned int i = 0; i < tail->orig_size; ++i) {
+                new_array[counter] = new DataObject(*tail->array[i]);
+                counter++;
             }
+            tail->refcount -= 1;
+            // The above line does this.
+            //tail->dereference();
+        } else {
+            // Copy in the data objects.
+            std::copy(tail->array, tail->array + tail->orig_size,
+                      new_array + counter);
+            // Update the counter.
+            counter += tail->orig_size;
+            // Kill the object softly with our song, kill it softly
+            tail->safe_dereference();
         }
-
-        delete concats;
-        concats = NULL;
-        ccount = 0;
     }
 
     if(array != new_array)
         array = new_array;
     orig_size = counter;
+
+    delete concats;
+    concats = NULL;
+    ccount = 0;
 }
 
 HeapObj * HeapObj::concat(HeapObj * robj, long typeflag) {
     //DEBUG//if(destructed || robj->destructed) throw 5000;
 
-    if(robj->orig_size == 0 && robj->concats == NULL && robj->incats == NULL) {
+    if(robj->orig_size == 0 && robj->concats == NULL) {
         reference();
         set_cast_type(typeflag);
         return this;
     }
-    if(orig_size == 0 && concats == NULL && incats == NULL) {
+    if(orig_size == 0 && concats == NULL) {
         robj->reference();
         robj->set_cast_type(typeflag);
         return robj;
@@ -454,14 +412,9 @@ HeapObj * HeapObj::concat(HeapObj * robj, long typeflag) {
 
     HeapObj * tcopy;
     if(concats != NULL) {
-        unsigned int ics = (incats != NULL) ? incats->size() : 0;
-        tcopy = new HeapObj(orig_size + ics, 1);
+        tcopy = new HeapObj(orig_size, 1);
         for(unsigned int i = 0; i < orig_size; i++)
             tcopy->array[i] = new DataObject(*array[i]);
-
-        if(ics > 0)
-            for(unsigned int i = 0; i < ics; ++i)
-                tcopy->array[i + orig_size] = new DataObject(*(*incats)[i]);
 
         tcopy->concats = new std::vector<HeapObj *>(*concats);
     } else {
@@ -473,7 +426,7 @@ HeapObj * HeapObj::concat(HeapObj * robj, long typeflag) {
     }
 
     // Copy the right array in.
-    if(robj->orig_size || robj->incats != NULL) {
+    if(robj->orig_size) {
         tcopy->concats->push_back(robj);
         //robj->reference();
     }
@@ -491,24 +444,7 @@ HeapObj * HeapObj::concat(HeapObj * robj, long typeflag) {
 }
 
 HeapObj * HeapObj::alt_concat(HeapObj * robj, long typeflag) {
-    std::cout << "r" << refcount << " + " << robj->refcount << std::endl;
-    std::cout << "c" << ccount << " + " << robj->ccount << std::endl;
-    std::cout << "s" << get_size() << " + " << robj->get_size() << std::endl;
-    /*if(concats == NULL &&
-       robj->refcount == 1 && robj->concats == NULL) {
-        HeapObj * tcopy = new HeapObj(0, 1);
-    }*/
     if(refcount > 1 || robj->refcount > 1) {
-        if(refcount == 1) {
-            if(ccount == 0)
-                concats = new std::vector<HeapObj *>;
-            concats->push_back(robj);
-            if(robj->ccount)
-                concats->insert(concats->end(), robj->concats->begin(), robj->concats->end());
-            ccount += robj->ccount + 1;
-            robj->reference();
-            return this;
-        }
         HeapObj * concatted = concat(robj, typeflag);
 
         // Drop the refcounts
@@ -531,17 +467,8 @@ HeapObj * HeapObj::alt_concat(HeapObj * robj, long typeflag) {
     }
 
     if(ccount || robj->ccount) {
-        if(ccount == 0) {
-            if(capacity - orig_size >= robj->orig_size) {
-                std::copy(robj->array, robj->array + robj->orig_size,
-                          array + orig_size);
-                concats = new std::vector<HeapObj *>(*robj->concats);
-                ccount = robj->ccount;
-                delete robj;
-                return this;
-            }
+        if(ccount == 0)
             concats = new std::vector<HeapObj *>;
-        }
         concats->push_back(robj);
         if(robj->ccount) {
             concats->insert(concats->end(),

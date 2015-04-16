@@ -139,4 +139,3 @@ void dump_offset(std::vector<DataObject *> * data_stack, long offset) {
     }
     std::cout << "*************************" << std::endl;
 }
-
